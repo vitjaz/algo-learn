@@ -1,0 +1,85 @@
+{
+  "common": {
+    "siteName": "Algo Learn",
+    "siteDescription": "Learning algorithms and data structures for web developers",
+    "madeWithLove": "Made with love",
+    "language": "Language",
+    "theme": "Theme",
+    "lightTheme": "Light",
+    "darkTheme": "Dark",
+    "sidebarToggle": "Menu",
+    "collapseSidebar": "Collapse",
+    "expandSidebar": "Expand"
+  },
+  "categories": {
+    "search": "Search Algorithms",
+    "sorting": "Sorting Algorithms"
+  },
+  "home": {
+    "heroTitle": "Algo Learn",
+    "heroSubtitle": "Learn algorithms through interactive visualizations",
+    "heroDescription": "Understanding algorithms and data structures is a key skill for web developers. We help you master them through clear animations and step-by-step visualizations.",
+    "startLearning": "Start Learning",
+    "quickNavTitle": "Algorithm Categories",
+    "searchDesc": "Search algorithms help find elements in data structures quickly and efficiently.",
+    "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming."
+  },
+  "algorithm": {
+    "description": "Description",
+    "whyItMatters": "Why It Matters",
+    "complexity": "Complexity",
+    "bestCase": "Best Case",
+    "averageCase": "Average Case",
+    "worstCase": "Worst Case",
+    "spaceComplexity": "Space Complexity",
+    "codeExample": "Code Example",
+    "leetcodeTasks": "LeetCode Problems",
+    "leetcodeDifficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
+    "visualization": {
+      "title": "Visualization",
+      "play": "Play",
+      "pause": "Pause",
+      "stepForward": "Step Forward",
+      "stepBack": "Step Back",
+      "reset": "Reset",
+      "speed": "Speed",
+      "speedSlow": "Slow",
+      "speedNormal": "Normal",
+      "speedFast": "Fast",
+      "step": "Step",
+      "of": "of"
+    }
+  },
+  "algorithms": {
+    "binary-search": {
+      "title": "Binary Search",
+      "description": "Binary search is an algorithm for finding an element in a sorted array by repeatedly dividing the search interval in half. At each step, the algorithm compares the middle element of the array with the target value and eliminates the half where the element cannot exist.",
+      "whyItMatters": "Binary search is a fundamental algorithm constantly used in web development: searching sorted data, autocomplete, database index lookups, implementing bisect functions. Understanding binary search helps you grasp how database indexes work and why they're so fast.",
+      "steps": {
+        "initial": "Initial state: sorted array and target value {target}",
+        "compare": "Comparing middle element arr[{mid}] = {value} with target {target}",
+        "found": "Found! Element arr[{mid}] = {value} equals target {target}",
+        "goRight": "arr[{mid}] = {value} < {target}, excluding left half, searching right",
+        "goLeft": "arr[{mid}] = {value} > {target}, excluding right half, searching left",
+        "notFound": "Target element {target} not found in array"
+      }
+    },
+    "bubble-sort": {
+      "title": "Bubble Sort",
+      "description": "Bubble sort is a simple sorting algorithm that repeatedly walks through the array, compares adjacent elements, and swaps them if they are in the wrong order. The process repeats until the array is fully sorted.",
+      "whyItMatters": "While bubble sort is rarely used in production due to its inefficiency, it's an excellent learning algorithm for understanding sorting principles, element comparison, and value swapping. It's the foundation for understanding more complex sorting algorithms.",
+      "steps": {
+        "initial": "Initial state: unsorted array",
+        "compare": "Comparing arr[{i}] = {valI} and arr[{j}] = {valJ}",
+        "swap": "Swapping: {valI} > {valJ}",
+        "noSwap": "No swap: {valI} ≤ {valJ}",
+        "passComplete": "Pass {pass} complete. Largest element has 'bubbled up' to the end.",
+        "sorted": "Array is sorted!"
+      }
+    }
+  }
+}
