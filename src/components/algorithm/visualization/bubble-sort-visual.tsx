@@ -11,30 +11,35 @@ interface BubbleSortVisualProps {
 
 export function BubbleSortVisual({ step }: BubbleSortVisualProps) {
   const t = useTranslations();
+  const tv = useTranslations("algorithm.visualization.legend");
+  const tvControls = useTranslations("algorithm.visualization");
   const { array, comparing, swapped, sortedFrom, type } = step;
   const maxVal = Math.max(...array);
 
   return (
     <div className="flex flex-col items-center gap-6 p-4">
       {/* Bar visualization */}
-      <div className="flex items-end gap-1 justify-center" style={{ height: "200px" }}>
+      <div
+        className="flex items-end gap-1 justify-center"
+        style={{ height: "200px" }}
+      >
         {array.map((value, index) => {
           const height = (value / maxVal) * 180 + 20;
-          let bgColor = "bg-blue-500";
-          let borderColor = "border-blue-600";
+          let bgColor = "bg-viz-default text-viz-default-foreground";
+          let borderColor = "border-viz-default";
 
           if (index >= sortedFrom) {
-            bgColor = "bg-green-500";
-            borderColor = "border-green-600";
+            bgColor = "bg-viz-found text-viz-found-foreground";
+            borderColor = "border-viz-found";
           }
 
           if (comparing && (index === comparing[0] || index === comparing[1])) {
             if (swapped) {
-              bgColor = "bg-red-500";
-              borderColor = "border-red-600";
+              bgColor = "bg-viz-swap text-viz-swap-foreground";
+              borderColor = "border-viz-swap";
             } else {
-              bgColor = "bg-yellow-500";
-              borderColor = "border-yellow-600";
+              bgColor = "bg-viz-mid text-viz-mid-foreground";
+              borderColor = "border-viz-mid";
             }
           }
 
@@ -45,14 +50,14 @@ export function BubbleSortVisual({ step }: BubbleSortVisualProps) {
               className={cn(
                 "flex flex-col items-center justify-end rounded-t-md border-2 border-b-0 transition-colors",
                 bgColor,
-                borderColor
+                borderColor,
               )}
               style={{ width: "40px" }}
               initial={{ height: 0 }}
               animate={{ height }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <span className="text-xs font-bold text-white mb-1">{value}</span>
+              <span className="text-xs font-bold mb-1">{value}</span>
             </motion.div>
           );
         })}
@@ -61,7 +66,7 @@ export function BubbleSortVisual({ step }: BubbleSortVisualProps) {
       {/* Pass info */}
       {step.currentPass > 0 && (
         <div className="text-xs text-muted-foreground">
-          Pass: {step.currentPass}
+          {tvControls("pass")}: {step.currentPass}
         </div>
       )}
 
@@ -75,20 +80,20 @@ export function BubbleSortVisual({ step }: BubbleSortVisualProps) {
       {/* Legend */}
       <div className="flex flex-wrap gap-3 text-xs">
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-blue-500" />
-          <span className="text-muted-foreground">Unsorted</span>
+          <div className="size-3 rounded bg-viz-default" />
+          <span className="text-muted-foreground">{tv("unsorted")}</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-yellow-500" />
-          <span className="text-muted-foreground">Comparing</span>
+          <div className="size-3 rounded bg-viz-mid" />
+          <span className="text-muted-foreground">{tv("comparing")}</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-red-500" />
-          <span className="text-muted-foreground">Swapping</span>
+          <div className="size-3 rounded bg-viz-swap" />
+          <span className="text-muted-foreground">{tv("swapping")}</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-green-500" />
-          <span className="text-muted-foreground">Sorted</span>
+          <div className="size-3 rounded bg-viz-found" />
+          <span className="text-muted-foreground">{tv("sorted")}</span>
         </div>
       </div>
     </div>

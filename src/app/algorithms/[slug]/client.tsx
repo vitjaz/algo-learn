@@ -1,12 +1,25 @@
 "use client";
 
-import type { BinarySearchStep, BubbleSortStep, AlgorithmMeta } from "@/types/algorithm";
+import { useTranslations } from "next-intl";
+import type {
+  BinarySearchStep,
+  BubbleSortStep,
+  AlgorithmMeta,
+} from "@/types/algorithm";
 import { AlgorithmDescription } from "@/components/algorithm/algorithm-description";
 import { ComplexityTable } from "@/components/algorithm/complexity-table";
 import { CodeExample } from "@/components/algorithm/code-example";
 import { LeetCodeTasks } from "@/components/algorithm/leetcode-tasks";
 import { VisualizationContainer } from "@/components/algorithm/visualization/visualization-container";
-import { Separator } from "@/components/ui/separator";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import Link from "next/link";
 
 interface AlgorithmPageClientProps {
   slug: string;
@@ -14,31 +27,56 @@ interface AlgorithmPageClientProps {
   steps: BinarySearchStep[] | BubbleSortStep[];
 }
 
-export function AlgorithmPageClient({ slug, algorithm, steps }: AlgorithmPageClientProps) {
+const slugToCategory: Record<string, string> = {
+  "binary-search": "search",
+  "bubble-sort": "sorting",
+};
+
+export function AlgorithmPageClient({
+  slug,
+  algorithm,
+  steps,
+}: AlgorithmPageClientProps) {
+  const t = useTranslations();
+  const categoryId = slugToCategory[slug] ?? "search";
+
   return (
-    <div className="space-y-8">
+    <div className="flex flex-col gap-8">
+      {/* Breadcrumb */}
+      <Breadcrumb>
+        <BreadcrumbList>
+          <BreadcrumbItem>
+            <BreadcrumbLink render={<Link href="/" />}>
+              {t("common.siteName")}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbLink render={<Link href="/" />}>
+              {t(`categories.${categoryId}`)}
+            </BreadcrumbLink>
+          </BreadcrumbItem>
+          <BreadcrumbSeparator />
+          <BreadcrumbItem>
+            <BreadcrumbPage>{t(`algorithms.${slug}.title`)}</BreadcrumbPage>
+          </BreadcrumbItem>
+        </BreadcrumbList>
+      </Breadcrumb>
+
       {/* Description */}
       <AlgorithmDescription slug={slug} />
-
-      <Separator />
 
       {/* Visualization */}
       <VisualizationContainer steps={steps} algorithmSlug={slug} />
 
-      <Separator />
-
       {/* Complexity */}
       <ComplexityTable complexity={algorithm.complexity} />
-
-      <Separator />
 
       {/* Code Examples */}
       <CodeExample
         typescript={algorithm.codeExamples.typescript}
         python={algorithm.codeExamples.python}
       />
-
-      <Separator />
 
       {/* LeetCode Tasks */}
       <LeetCodeTasks tasks={algorithm.leetcodeTasks} />

@@ -3,7 +3,11 @@
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import type { BinarySearchStep, BubbleSortStep } from "@/types/algorithm";
-import { VisualizationControls, getSpeedMs, type Speed } from "./visualization-controls";
+import {
+  VisualizationControls,
+  getSpeedMs,
+  type Speed,
+} from "./visualization-controls";
 import { BinarySearchVisual } from "./binary-search-visual";
 import { BubbleSortVisual } from "./bubble-sort-visual";
 
@@ -80,9 +84,9 @@ export function VisualizationContainer({
   }, [isPlaying, speed, steps.length, clearPlayback]);
 
   return (
-    <div className="space-y-4">
-      <h3 className="text-lg font-semibold">{t("title")}</h3>
-      <div className="bg-card rounded-xl border border-border overflow-hidden">
+    <section className="flex flex-col gap-4">
+      <h2 className="text-lg font-semibold">{t("title")}</h2>
+      <div className="rounded-lg overflow-hidden bg-muted/30">
         {algorithmSlug === "binary-search" ? (
           <BinarySearchVisual step={step as BinarySearchStep} />
         ) : (
@@ -101,6 +105,6 @@ export function VisualizationContainer({
         onReset={handleReset}
         onSpeedChange={handleSpeedChange}
       />
-    </div>
+    </section>
   );
 }

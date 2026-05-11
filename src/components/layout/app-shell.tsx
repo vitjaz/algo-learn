@@ -1,30 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { SidebarProvider, SidebarInset } from "@/components/ui/sidebar";
+import { AppSidebar } from "./sidebar";
 import { TopBar } from "./topbar";
-import { Sidebar } from "./sidebar";
-import { MobileSidebar } from "./mobile-sidebar";
 import { Footer } from "./footer";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
   return (
-    <div className="flex flex-col h-screen">
-      <TopBar onMenuClick={() => setMobileMenuOpen(true)} />
-      <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
-        <MobileSidebar
-          open={mobileMenuOpen}
-          onClose={() => setMobileMenuOpen(false)}
-        />
-        <div className="flex-1 flex flex-col overflow-y-auto">
-          <main className="flex-1 p-4 md:p-6 lg:p-8">
-            <div className="max-w-4xl mx-auto">{children}</div>
-          </main>
-          <Footer />
+    <SidebarProvider>
+      <AppSidebar />
+      <SidebarInset className="flex flex-col min-h-screen">
+        <TopBar />
+        <div className="flex-1 overflow-y-auto">
+          <div className="flex justify-center px-6 py-8 md:px-10 md:py-10 lg:px-16">
+            <div className="w-full max-w-4xl">{children}</div>
+          </div>
         </div>
-      </div>
-    </div>
+        <Footer />
+      </SidebarInset>
+    </SidebarProvider>
   );
 }

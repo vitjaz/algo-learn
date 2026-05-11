@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Play, Pause, SkipForward, SkipBack, RotateCcw } from "lucide-react";
 
 export type Speed = "slow" | "normal" | "fast";
@@ -26,23 +27,17 @@ export function VisualizationControls({
   speed,
   onPlay,
   onPause,
-  onStepForward,
   onStepBack,
+  onStepForward,
   onReset,
   onSpeedChange,
 }: VisualizationControlsProps) {
   const t = useTranslations("algorithm.visualization");
 
-  const speedMs: Record<Speed, number> = {
-    slow: 1500,
-    normal: 800,
-    fast: 300,
-  };
-
   return (
-    <div className="flex flex-col gap-3 p-4 bg-card rounded-lg border border-border">
+    <div className="flex flex-col gap-4 p-4 bg-muted/30 rounded-lg">
       {/* Step counter */}
-      <div className="text-sm text-muted-foreground text-center">
+      <div className="text-sm text-muted-foreground text-center font-medium">
         {t("step")} {currentStep + 1} {t("of")} {totalSteps}
       </div>
 
@@ -55,7 +50,7 @@ export function VisualizationControls({
           aria-label={t("reset")}
           title={t("reset")}
         >
-          <RotateCcw className="h-4 w-4" />
+          <RotateCcw className="size-4" />
         </Button>
         <Button
           variant="outline"
@@ -65,7 +60,7 @@ export function VisualizationControls({
           aria-label={t("stepBack")}
           title={t("stepBack")}
         >
-          <SkipBack className="h-4 w-4" />
+          <SkipBack className="size-4" />
         </Button>
         {isPlaying ? (
           <Button
@@ -75,7 +70,7 @@ export function VisualizationControls({
             aria-label={t("pause")}
             title={t("pause")}
           >
-            <Pause className="h-4 w-4" />
+            <Pause className="size-4" />
           </Button>
         ) : (
           <Button
@@ -86,7 +81,7 @@ export function VisualizationControls({
             aria-label={t("play")}
             title={t("play")}
           >
-            <Play className="h-4 w-4" />
+            <Play className="size-4" />
           </Button>
         )}
         <Button
@@ -97,24 +92,32 @@ export function VisualizationControls({
           aria-label={t("stepForward")}
           title={t("stepForward")}
         >
-          <SkipForward className="h-4 w-4" />
+          <SkipForward className="size-4" />
         </Button>
       </div>
 
       {/* Speed controls */}
       <div className="flex items-center justify-center gap-2">
         <span className="text-xs text-muted-foreground">{t("speed")}:</span>
-        {(["slow", "normal", "fast"] as Speed[]).map((s) => (
-          <Button
-            key={s}
-            variant={speed === s ? "default" : "ghost"}
-            size="sm"
-            onClick={() => onSpeedChange(s)}
-            className="text-xs h-7"
-          >
-            {t(`speed${s.charAt(0).toUpperCase() + s.slice(1)}` as "speedSlow" | "speedNormal" | "speedFast")}
-          </Button>
-        ))}
+        <ToggleGroup
+          variant="outline"
+          size="sm"
+          value={[speed]}
+          onValueChange={(value: string[]) => {
+            if (value.length > 0) onSpeedChange(value[0] as Speed);
+          }}
+        >
+          {(["slow", "normal", "fast"] as Speed[]).map((s) => (
+            <ToggleGroupItem key={s} value={s}>
+              {t(
+                `speed${s.charAt(0).toUpperCase() + s.slice(1)}` as
+                  | "speedSlow"
+                  | "speedNormal"
+                  | "speedFast",
+              )}
+            </ToggleGroupItem>
+          ))}
+        </ToggleGroup>
       </div>
     </div>
   );

@@ -3,93 +3,71 @@
 import { useTranslations } from "next-intl";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { cn } from "@/lib/utils";
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarGroup,
+  SidebarGroupLabel,
+  SidebarGroupContent,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarFooter,
+  SidebarRail,
+} from "@/components/ui/sidebar";
 import { categories } from "@/lib/data/algorithms";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Search, ArrowUpDown } from "lucide-react";
-import { useState } from "react";
+import { Search, ArrowUpDown, Code2 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
-  search: <Search className="h-4 w-4" />,
-  sorting: <ArrowUpDown className="h-4 w-4" />,
+  search: <Search />,
+  sorting: <ArrowUpDown />,
 };
 
-interface SidebarProps {
-  className?: string;
-}
-
-export function Sidebar({ className }: SidebarProps) {
+export function AppSidebar() {
   const t = useTranslations();
   const pathname = usePathname();
-  const [collapsed, setCollapsed] = useState(false);
 
   return (
-    <aside
-      className={cn(
-        "hidden md:flex flex-col border-r border-border bg-sidebar-background transition-all duration-300",
-        collapsed ? "w-16" : "w-64",
-        className
-      )}
-    >
-      {/* Sidebar header */}
-      <div className="flex items-center justify-between p-3 border-b border-border">
-        {!collapsed && (
-          <span className="text-sm font-semibold text-sidebar-foreground">
-            {t("common.sidebarToggle")}
-          </span>
-        )}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-7 w-7 ml-auto"
-          onClick={() => setCollapsed(!collapsed)}
-          aria-label={collapsed ? t("common.expandSidebar") : t("common.collapseSidebar")}
-        >
-          {collapsed ? (
-            <ChevronRight className="h-4 w-4" />
-          ) : (
-            <ChevronLeft className="h-4 w-4" />
-          )}
-        </Button>
-      </div>
-
-      {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto p-2">
+    <Sidebar collapsible="icon">
+      <SidebarContent>
         {categories.map((category) => (
-          <div key={category.id} className="mb-4">
-            {!collapsed && (
-              <div className="flex items-center gap-2 px-2 py-1.5 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                {categoryIcons[category.id]}
-                {t(`categories.${category.id}`)}
-              </div>
-            )}
-            <ul className="space-y-0.5">
-              {category.algorithms.map((slug) => {
-                const href = `/algorithms/${slug}`;
-                const isActive = pathname === href;
-                return (
-                  <li key={slug}>
-                    <Link
-                      href={href}
-                      className={cn(
-                        "flex items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
-                        isActive
-                          ? "bg-sidebar-accent text-sidebar-accent-foreground font-medium"
-                          : "text-sidebar-foreground hover:bg-sidebar-accent/50",
-                        collapsed && "justify-center px-1"
-                      )}
-                      title={collapsed ? t(`algorithms.${slug}.title`) : undefined}
-                    >
-                      {collapsed && <span className="text-xs">📌</span>}
-                      {!collapsed && t(`algorithms.${slug}.title`)}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
+          <SidebarGroup key={category.id}>
+            <SidebarGroupLabel className="flex items-center gap-2">
+              {categoryIcons[category.id]}
+              <span>{t(`categories.${category.id}`)}</span>
+            </SidebarGroupLabel>
+            <SidebarGroupContent>
+              <SidebarMenu>
+                {category.algorithms.map((slug) => {
+                  const href = `/algorithms/${slug}`;
+                  const isActive = pathname === href;
+                  return (
+                    <SidebarMenuItem key={slug}>
+                      <SidebarMenuButton
+                        render={<Link href={href} />}
+                        isActive={isActive}
+                        tooltip={t(`algorithms.${slug}.title`)}
+                      >
+                        <Code2 />
+                        <span>{t(`algorithms.${slug}.title`)}</span>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+              </SidebarMenu>
+            </SidebarGroupContent>
+          </SidebarGroup>
         ))}
-      </nav>
-    </aside>
+      </SidebarContent>
+
+      <SidebarFooter className="p-4">
+        <div className="flex items-center gap-2 text-xs text-muted-foreground group-data-[collapsible=icon]:hidden">
+          <Code2 className="size-3" />
+          <span>v1.0</span>
+        </div>
+      </SidebarFooter>
+
+      <SidebarRail />
+    </Sidebar>
   );
 }

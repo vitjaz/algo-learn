@@ -51,7 +51,18 @@
       "speedNormal": "Normal",
       "speedFast": "Fast",
       "step": "Step",
-      "of": "of"
+      "of": "of",
+      "pass": "Pass",
+      "legend": {
+        "range": "Range",
+        "mid": "Mid",
+        "found": "Found",
+        "eliminated": "Eliminated",
+        "unsorted": "Unsorted",
+        "comparing": "Comparing",
+        "swapping": "Swapping",
+        "sorted": "Sorted"
+      }
     }
   },
   "algorithms": {

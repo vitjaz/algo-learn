@@ -51,7 +51,18 @@
       "speedNormal": "Обычно",
       "speedFast": "Быстро",
       "step": "Шаг",
-      "of": "из"
+      "of": "из",
+      "pass": "Проход",
+      "legend": {
+        "range": "Диапазон",
+        "mid": "Середина",
+        "found": "Найдено",
+        "eliminated": "Исключено",
+        "unsorted": "Неотсортировано",
+        "comparing": "Сравнение",
+        "swapping": "Обмен",
+        "sorted": "Отсортировано"
+      }
     }
   },
   "algorithms": {

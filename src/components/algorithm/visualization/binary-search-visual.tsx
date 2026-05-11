@@ -11,35 +11,36 @@ interface BinarySearchVisualProps {
 
 export function BinarySearchVisual({ step }: BinarySearchVisualProps) {
   const t = useTranslations();
+  const tv = useTranslations("algorithm.visualization.legend");
   const { array, target, left, right, mid, found, type } = step;
 
   return (
     <div className="flex flex-col items-center gap-6 p-4">
       {/* Target display */}
       <div className="text-center">
-        <span className="text-sm text-muted-foreground">
+        {/* <span className="text-sm text-muted-foreground">
           {type === "initial"
             ? t("algorithms.binary-search.steps.initial", { target })
             : `Target: ${target}`}
-        </span>
+        </span> */}
         <div className="text-3xl font-bold text-primary mt-1">{target}</div>
       </div>
 
       {/* Array visualization */}
       <div className="flex items-end gap-1 flex-wrap justify-center">
         {array.map((value, index) => {
-          let bgColor = "bg-muted text-muted-foreground"; // default/eliminated
-          let borderColor = "border-border";
+          let bgColor = "bg-viz-default text-viz-default-foreground";
+          let borderColor = "border-viz-default";
 
           if (found && mid === index) {
-            bgColor = "bg-green-500 text-white";
-            borderColor = "border-green-600";
+            bgColor = "bg-viz-found text-viz-found-foreground";
+            borderColor = "border-viz-found";
           } else if (mid === index) {
-            bgColor = "bg-yellow-500 text-white";
-            borderColor = "border-yellow-600";
+            bgColor = "bg-viz-mid text-viz-mid-foreground";
+            borderColor = "border-viz-mid";
           } else if (index >= left && index <= right) {
-            bgColor = "bg-blue-500 text-white";
-            borderColor = "border-blue-600";
+            bgColor = "bg-viz-range text-viz-range-foreground";
+            borderColor = "border-viz-range";
           }
 
           return (
@@ -49,7 +50,7 @@ export function BinarySearchVisual({ step }: BinarySearchVisualProps) {
               className={cn(
                 "flex flex-col items-center justify-center w-12 h-12 rounded-lg border-2 font-mono text-sm font-bold transition-colors",
                 bgColor,
-                borderColor
+                borderColor,
               )}
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -65,14 +66,15 @@ export function BinarySearchVisual({ step }: BinarySearchVisualProps) {
       {/* Pointer indicators */}
       <div className="flex gap-4 text-xs text-muted-foreground">
         <span>
-          L = <span className="font-mono font-bold text-blue-500">{left}</span>
+          L = <span className="font-mono font-bold text-viz-range">{left}</span>
         </span>
         <span>
-          R = <span className="font-mono font-bold text-blue-500">{right}</span>
+          R ={" "}
+          <span className="font-mono font-bold text-viz-range">{right}</span>
         </span>
         {mid !== null && (
           <span>
-            M = <span className="font-mono font-bold text-yellow-500">{mid}</span>
+            M = <span className="font-mono font-bold text-viz-mid">{mid}</span>
           </span>
         )}
       </div>
@@ -81,12 +83,18 @@ export function BinarySearchVisual({ step }: BinarySearchVisualProps) {
       <div className="text-center text-sm p-3 bg-muted rounded-lg max-w-md">
         {type !== "initial" && type !== "notFound" && type !== "found" && (
           <span>
-            {t(`algorithms.binary-search.steps.${type}`, step.descriptionParams)}
+            {t(
+              `algorithms.binary-search.steps.${type}`,
+              step.descriptionParams,
+            )}
           </span>
         )}
         {(type === "initial" || type === "notFound" || type === "found") && (
           <span>
-            {t(`algorithms.binary-search.steps.${type}`, step.descriptionParams)}
+            {t(
+              `algorithms.binary-search.steps.${type}`,
+              step.descriptionParams,
+            )}
           </span>
         )}
       </div>
@@ -94,20 +102,20 @@ export function BinarySearchVisual({ step }: BinarySearchVisualProps) {
       {/* Legend */}
       <div className="flex flex-wrap gap-3 text-xs">
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-blue-500" />
-          <span className="text-muted-foreground">Range</span>
+          <div className="size-3 rounded bg-viz-range" />
+          <span className="text-muted-foreground">{tv("range")}</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-yellow-500" />
-          <span className="text-muted-foreground">Mid</span>
+          <div className="size-3 rounded bg-viz-mid" />
+          <span className="text-muted-foreground">{tv("mid")}</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-green-500" />
-          <span className="text-muted-foreground">Found</span>
+          <div className="size-3 rounded bg-viz-found" />
+          <span className="text-muted-foreground">{tv("found")}</span>
         </div>
         <div className="flex items-center gap-1">
-          <div className="w-3 h-3 rounded bg-muted" />
-          <span className="text-muted-foreground">Eliminated</span>
+          <div className="size-3 rounded bg-muted" />
+          <span className="text-muted-foreground">{tv("eliminated")}</span>
         </div>
       </div>
     </div>
