@@ -27,7 +27,7 @@ export function ComplexityTable({ complexity }: ComplexityTableProps) {
             key={row.label}
             className="flex flex-col items-center gap-2 p-4 rounded-lg bg-muted/50"
           >
-            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider text-center">
               {row.label}
             </span>
             <Badge
