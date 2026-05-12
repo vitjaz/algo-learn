@@ -8,7 +8,7 @@ import type { BinarySearchStep } from "@/types/algorithm";
  */
 export function generateBinarySearchSteps(
   array: number[],
-  target: number
+  target: number,
 ): BinarySearchStep[] {
   const steps: BinarySearchStep[] = [];
   let left = 0;

@@ -28,19 +28,13 @@ interface AlgorithmPageClientProps {
   steps: BinarySearchStep[] | BubbleSortStep[] | QuickSortStep[];
 }
 
-const slugToCategory: Record<string, string> = {
-  "binary-search": "search",
-  "bubble-sort": "sorting",
-  "quick-sort": "sorting",
-};
-
 export function AlgorithmPageClient({
   slug,
   algorithm,
   steps,
 }: AlgorithmPageClientProps) {
   const t = useTranslations();
-  const categoryId = slugToCategory[slug] ?? "search";
+  const categoryId = algorithm.category;
 
   return (
     <div className="flex flex-col gap-8">

@@ -15,7 +15,7 @@ import {
   SidebarFooter,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { categories } from "@/lib/data/algorithms";
+import { categories } from "@/lib/algorithms";
 import { Search, ArrowUpDown, Binary, Bubbles, Zap, Code2 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {

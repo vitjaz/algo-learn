@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
-import { categories } from "@/lib/data/algorithms";
+import { categories } from "@/lib/algorithms";
 import {
   Card,
   CardContent,

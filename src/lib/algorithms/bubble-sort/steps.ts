@@ -5,7 +5,9 @@ import type { BubbleSortStep } from "@/types/algorithm";
  * @param inputArray - array of numbers to sort
  * @returns array of steps representing the algorithm execution
  */
-export function generateBubbleSortSteps(inputArray: number[]): BubbleSortStep[] {
+export function generateBubbleSortSteps(
+  inputArray: number[],
+): BubbleSortStep[] {
   const steps: BubbleSortStep[] = [];
   const array = [...inputArray];
   const n = array.length;
@@ -35,7 +37,12 @@ export function generateBubbleSortSteps(inputArray: number[]): BubbleSortStep[] 
         sortedFrom: n - i,
         currentPass: i + 1,
         descriptionKey: "algorithms.bubble-sort.steps.compare",
-        descriptionParams: { i: j, j: j + 1, valI: array[j], valJ: array[j + 1] },
+        descriptionParams: {
+          i: j,
+          j: j + 1,
+          valI: array[j],
+          valJ: array[j + 1],
+        },
       });
 
       if (array[j] > array[j + 1]) {
