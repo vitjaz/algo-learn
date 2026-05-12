@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useLocaleContext } from "@/components/providers/intl-provider";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 import { Sun, Moon, Languages } from "lucide-react";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
@@ -14,17 +15,20 @@ export function TopBar() {
   const { locale, changeLocale } = useLocaleContext();
 
   return (
-    <header className="flex h-14 shrink-0 items-center gap-2 border-b border-border px-4">
+    <header className="relative z-20 flex h-14 shrink-0 items-center gap-2 border-b border-border  px-4">
       <SidebarTrigger className="-ml-1" />
       {/* <Separator orientation="vertical" className="mr-2 h-4" /> */}
 
       {/* Logo */}
-      <span className="flex items-center gap-2 font-bold text-lg mr-auto tracking-tight">
+      <Link
+        href="/"
+        className="flex items-center gap-2 font-bold text-lg mr-auto tracking-tight"
+      >
         <span className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground text-xs font-extrabold">
           AL
         </span>
         <span className="hidden sm:inline">{t("siteName")}</span>
-      </span>
+      </Link>
 
       {/* Right side controls */}
       <div className="flex items-center gap-1">

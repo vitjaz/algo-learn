@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 import { Highlight, themes } from "prism-react-renderer";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -15,8 +16,10 @@ interface CodeExampleProps {
 export function CodeExample({ typescript, python }: CodeExampleProps) {
   const t = useTranslations("algorithm");
   const [copied, setCopied] = useState(false);
+  const [activeTab, setActiveTab] = useState("typescript");
 
-  const handleCopy = async (code: string) => {
+  const handleCopy = async () => {
+    const code = activeTab === "typescript" ? typescript : python;
     await navigator.clipboard.writeText(code);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -29,7 +32,7 @@ export function CodeExample({ typescript, python }: CodeExampleProps) {
         <Button
           variant="ghost"
           size="sm"
-          onClick={() => handleCopy(typescript)}
+          onClick={handleCopy}
           className="gap-1.5"
         >
           {copied ? (
@@ -42,7 +45,11 @@ export function CodeExample({ typescript, python }: CodeExampleProps) {
       </div>
 
       <div className="rounded-lg overflow-hidden">
-        <Tabs className="flex-col" defaultValue="typescript">
+        <Tabs
+          className="flex-col"
+          defaultValue="typescript"
+          onValueChange={setActiveTab}
+        >
           <TabsList className="w-full rounded-none bg-muted/50 justify-start rounded-t-lg px-4">
             <TabsTrigger value="typescript">TypeScript</TabsTrigger>
             <TabsTrigger value="python">Python</TabsTrigger>
@@ -59,9 +66,23 @@ export function CodeExample({ typescript, python }: CodeExampleProps) {
   );
 }
 
+const emptySubscribe = () => () => {};
+
 function CodeBlock({ code, language }: { code: string; language: string }) {
+  const { resolvedTheme } = useTheme();
+  const mounted = useSyncExternalStore(
+    emptySubscribe,
+    () => true,
+    () => false,
+  );
+
+  const theme =
+    mounted && resolvedTheme === "dark"
+      ? themes.nightOwl
+      : themes.nightOwlLight;
+
   return (
-    <Highlight theme={themes.nightOwl} code={code} language={language}>
+    <Highlight theme={theme} code={code} language={language}>
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <pre
           style={{

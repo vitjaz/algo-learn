@@ -16,11 +16,16 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { categories } from "@/lib/data/algorithms";
-import { Search, ArrowUpDown, Code2 } from "lucide-react";
+import { Search, ArrowUpDown, Binary, Bubbles, Code2 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   search: <Search />,
   sorting: <ArrowUpDown />,
+};
+
+const algorithmIcons: Record<string, React.ReactNode> = {
+  "binary-search": <Binary />,
+  "bubble-sort": <Bubbles />,
 };
 
 export function AppSidebar() {
@@ -48,7 +53,7 @@ export function AppSidebar() {
                         isActive={isActive}
                         tooltip={t(`algorithms.${slug}.title`)}
                       >
-                        <Code2 />
+                        {algorithmIcons[slug] ?? <Code2 />}
                         <span>{t(`algorithms.${slug}.title`)}</span>
                       </SidebarMenuButton>
                     </SidebarMenuItem>

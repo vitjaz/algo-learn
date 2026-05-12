@@ -100,7 +100,7 @@ export function BinarySearchVisual({ step }: BinarySearchVisualProps) {
       </div>
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-3 text-xs">
+      <div className="flex flex-wrap items-center justify-center gap-3 text-xs">
         <div className="flex items-center gap-1">
           <div className="size-3 rounded bg-viz-range" />
           <span className="text-muted-foreground">{tv("range")}</span>

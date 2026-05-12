@@ -78,7 +78,7 @@ export function BubbleSortVisual({ step }: BubbleSortVisualProps) {
       </div>
 
       {/* Legend */}
-      <div className="flex flex-wrap gap-3 text-xs">
+      <div className="flex flex-wrap items-center justify-center gap-3 text-xs">
         <div className="flex items-center gap-1">
           <div className="size-3 rounded bg-viz-default" />
           <span className="text-muted-foreground">{tv("unsorted")}</span>

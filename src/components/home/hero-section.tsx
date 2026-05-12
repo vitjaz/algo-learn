@@ -24,13 +24,16 @@ export function HeroSection() {
 
       {/* Content */}
       <div className="relative flex flex-col items-center gap-6 animate-fade-in">
-        <Badge variant="secondary" className="text-sm px-4 py-1">
+        <Badge
+          variant="secondary"
+          className="text-xs sm:text-sm px-3 sm:px-4 py-1 text-center leading-snug whitespace-normal h-auto max-w-xs sm:max-w-none"
+        >
           {t("heroSubtitle")}
         </Badge>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight">
           {t("heroTitle")}
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+        <p className="text-base sm:text-lg text-muted-foreground max-w-2xl leading-relaxed">
           {t("heroDescription")}
         </p>
         <Link href="/algorithms/binary-search">

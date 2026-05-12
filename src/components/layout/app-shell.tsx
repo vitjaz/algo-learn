@@ -7,17 +7,19 @@ import { Footer } from "./footer";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset className="flex flex-col min-h-screen">
-        <TopBar />
-        <div className="flex-1 overflow-y-auto">
-          <div className="flex justify-center px-6 py-8 md:px-10 md:py-10 lg:px-16">
-            <div className="w-full max-w-4xl">{children}</div>
+    <SidebarProvider className="min-h-0 flex h-screen flex-col overflow-hidden">
+      <TopBar />
+      <div className="flex min-h-0 flex-1">
+        <AppSidebar />
+        <SidebarInset className="overflow-hidden">
+          <div className="h-full overflow-y-auto">
+            <div className="flex justify-center px-6 py-8 md:px-10 md:py-10 lg:px-16">
+              <div className="w-full max-w-4xl">{children}</div>
+            </div>
           </div>
-        </div>
-        <Footer />
-      </SidebarInset>
+        </SidebarInset>
+      </div>
+      <Footer />
     </SidebarProvider>
   );
 }

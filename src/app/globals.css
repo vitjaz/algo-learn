@@ -28,7 +28,7 @@
   --chart-4: oklch(0.828 0.189 84.429);
   --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
-  --sidebar-background: oklch(0.98 0.005 265);
+  --sidebar-background: oklch(0.99 0.002 265);
   --sidebar-foreground: oklch(0.13 0.028 265);
   --sidebar-primary: oklch(0.45 0.2 265);
   --sidebar-primary-foreground: oklch(0.985 0 0);
@@ -73,7 +73,7 @@
   --chart-3: oklch(0.769 0.188 70.08);
   --chart-4: oklch(0.627 0.265 303.9);
   --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar-background: oklch(0.16 0.035 265);
+  --sidebar-background: oklch(0.13 0.028 265);
   --sidebar-foreground: oklch(0.96 0.01 265);
   --sidebar-primary: oklch(0.7 0.18 265);
   --sidebar-primary-foreground: oklch(0.96 0.01 265);
@@ -187,4 +187,9 @@
 a {
   color: inherit;
   text-decoration: none;
+}
+
+/* Offset fixed sidebar to clear the full-width TopBar */
+[data-slot="sidebar-container"] {
+  top: 3.5rem !important;
 }
