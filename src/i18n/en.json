@@ -53,6 +53,8 @@
       "step": "Step",
       "of": "of",
       "pass": "Pass",
+      "range": "Range",
+      "pivot": "Pivot",
       "legend": {
         "range": "Range",
         "mid": "Mid",
@@ -61,7 +63,8 @@
         "unsorted": "Unsorted",
         "comparing": "Comparing",
         "swapping": "Swapping",
-        "sorted": "Sorted"
+        "sorted": "Sorted",
+        "pivot": "Pivot"
       }
     }
   },
@@ -89,6 +92,21 @@
         "swap": "Swapping: {valI} > {valJ}",
         "noSwap": "No swap: {valI} ≤ {valJ}",
         "passComplete": "Pass {pass} complete. Largest element has 'bubbled up' to the end.",
+        "sorted": "Array is sorted!"
+      }
+    },
+    "quick-sort": {
+      "title": "Quick Sort",
+      "description": "Quick sort is an efficient sorting algorithm that uses a divide-and-conquer strategy. It selects a pivot element and partitions the array into two sub-arrays: elements less than or equal to the pivot, and elements greater than the pivot. The sub-arrays are then sorted recursively.",
+      "whyItMatters": "Quick sort is one of the most widely used sorting algorithms in practice. It's the default sorting algorithm in many programming languages and standard libraries. Understanding quick sort teaches you the divide-and-conquer paradigm, which is fundamental to many efficient algorithms.",
+      "steps": {
+        "initial": "Initial state: unsorted array",
+        "selectPivot": "Selecting pivot element {pivot} at index {index}",
+        "compare": "Comparing arr[{index}] = {value} with pivot {pivot}",
+        "swap": "Swapping arr[{indexI}] = {valI} and arr[{indexJ}] = {valJ}",
+        "noSwap": "Element {value} at index {index} is in correct partition",
+        "noSwapGreater": "{value} > {pivot}, stays in right partition",
+        "pivotPlaced": "Pivot {pivot} placed at position {position}",
         "sorted": "Array is sorted!"
       }
     }

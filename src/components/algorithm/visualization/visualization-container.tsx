@@ -2,7 +2,11 @@
 
 import { useState, useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-import type { BinarySearchStep, BubbleSortStep } from "@/types/algorithm";
+import type {
+  BinarySearchStep,
+  BubbleSortStep,
+  QuickSortStep,
+} from "@/types/algorithm";
 import {
   VisualizationControls,
   getSpeedMs,
@@ -10,9 +14,10 @@ import {
 } from "./visualization-controls";
 import { BinarySearchVisual } from "./binary-search-visual";
 import { BubbleSortVisual } from "./bubble-sort-visual";
+import { QuickSortVisual } from "./quick-sort-visual";
 
 interface VisualizationContainerProps {
-  steps: BinarySearchStep[] | BubbleSortStep[];
+  steps: BinarySearchStep[] | BubbleSortStep[] | QuickSortStep[];
   algorithmSlug: string;
 }
 
@@ -89,6 +94,8 @@ export function VisualizationContainer({
       <div className="rounded-lg overflow-hidden bg-muted/30">
         {algorithmSlug === "binary-search" ? (
           <BinarySearchVisual step={step as BinarySearchStep} />
+        ) : algorithmSlug === "quick-sort" ? (
+          <QuickSortVisual step={step as QuickSortStep} />
         ) : (
           <BubbleSortVisual step={step as BubbleSortStep} />
         )}

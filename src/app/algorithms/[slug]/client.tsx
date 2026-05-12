@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import type {
   BinarySearchStep,
   BubbleSortStep,
+  QuickSortStep,
   AlgorithmMeta,
 } from "@/types/algorithm";
 import { AlgorithmDescription } from "@/components/algorithm/algorithm-description";
@@ -24,12 +25,13 @@ import Link from "next/link";
 interface AlgorithmPageClientProps {
   slug: string;
   algorithm: AlgorithmMeta;
-  steps: BinarySearchStep[] | BubbleSortStep[];
+  steps: BinarySearchStep[] | BubbleSortStep[] | QuickSortStep[];
 }
 
 const slugToCategory: Record<string, string> = {
   "binary-search": "search",
   "bubble-sort": "sorting",
+  "quick-sort": "sorting",
 };
 
 export function AlgorithmPageClient({

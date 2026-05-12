@@ -71,3 +71,25 @@ export interface BubbleSortStep {
   descriptionKey: string;
   descriptionParams: Record<string, string | number>;
 }
+
+export type QuickSortStepType =
+  | "initial"
+  | "selectPivot"
+  | "compare"
+  | "swap"
+  | "noSwap"
+  | "noSwapGreater"
+  | "pivotPlaced"
+  | "sorted";
+
+export interface QuickSortStep {
+  type: QuickSortStepType;
+  array: number[];
+  range: [number, number];
+  pivotIndex: number;
+  comparing: number | null;
+  swapping: [number, number] | null;
+  sortedIndices: number[];
+  descriptionKey: string;
+  descriptionParams: Record<string, string | number>;
+}
