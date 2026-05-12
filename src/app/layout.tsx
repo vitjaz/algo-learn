@@ -16,10 +16,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://algo-learn.alexeev-blog.ru";
+
 export const metadata: Metadata = {
-  title: "Algo Learn — Learn Algorithms Through Visualizations",
+  title: "Algo Learn — Изучайте алгоритмы через визуализации",
   description:
-    "Interactive visualizations of algorithms and data structures for web developers. Learn binary search, bubble sort, and more with step-by-step animations.",
+    "Интерактивные визуализации алгоритмов и структур данных для веб-разработчиков. Бинарный поиск, сортировка пузырьком, быстрая сортировка и другие.",
+  openGraph: {
+    title: "Algo Learn — Изучайте алгоритмы через визуализации",
+    description:
+      "Интерактивные визуализации алгоритмов и структур данных для веб-разработчиков.",
+    url: SITE_URL,
+    siteName: "Algo Learn",
+    locale: "ru_RU",
+    type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/api/og?title=Algo%20Learn&desc=${encodeURIComponent("Изучайте алгоритмы через интерактивные визуализации")}`,
+        width: 1200,
+        height: 630,
+        alt: "Algo Learn — интерактивные визуализации алгоритмов",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Algo Learn — Изучайте алгоритмы через визуализации",
+    description:
+      "Интерактивные визуализации алгоритмов и структур данных для веб-разработчиков.",
+    images: [
+      `${SITE_URL}/api/og?title=Algo%20Learn&desc=${encodeURIComponent("Изучайте алгоритмы через интерактивные визуализации")}`,
+    ],
+  },
 };
 
 export default function RootLayout({

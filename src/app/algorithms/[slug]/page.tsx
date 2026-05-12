@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 import type {
   BinarySearchStep,
   BubbleSortStep,
@@ -6,6 +7,15 @@ import type {
 } from "@/types/algorithm";
 import { getAlgorithm, algorithmModules } from "@/lib/algorithms";
 import { AlgorithmPageClient } from "./client";
+
+const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://algo-learn.alexeev-blog.ru";
+
+const algorithmTitles: Record<string, string> = {
+  "binary-search": "Бинарный поиск",
+  "bubble-sort": "Сортировка пузырьком",
+  "quick-sort": "Быстрая сортировка",
+};
 
 interface AlgorithmPageProps {
   params: Promise<{ slug: string }>;
@@ -15,19 +25,43 @@ export function generateStaticParams() {
   return Object.keys(algorithmModules).map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: AlgorithmPageProps) {
+export async function generateMetadata({
+  params,
+}: AlgorithmPageProps): Promise<Metadata> {
   const { slug } = await params;
   const algorithm = getAlgorithm(slug);
-  if (!algorithm) return { title: "Not Found" };
+  if (!algorithm) return { title: "Не найдено" };
 
-  const title = slug
-    .split("-")
-    .map((w) => w[0].toUpperCase() + w.slice(1))
-    .join(" ");
+  const ruTitle = algorithmTitles[slug] || slug;
+  const title = `${ruTitle} — Algo Learn`;
+  const description = `Изучите алгоритм «${ruTitle}» с интерактивными визуализациями. Пошаговые анимации, примеры кода и задачи на LeetCode.`;
+  const ogImageUrl = `${SITE_URL}/api/og?title=${encodeURIComponent(ruTitle)}&desc=${encodeURIComponent(description)}`;
 
   return {
-    title: `${title} — Algo Learn`,
-    description: `Learn ${title} algorithm with interactive visualizations.`,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      url: `${SITE_URL}/algorithms/${slug}`,
+      siteName: "Algo Learn",
+      locale: "ru_RU",
+      type: "article",
+      images: [
+        {
+          url: ogImageUrl,
+          width: 1200,
+          height: 630,
+          alt: `Algo Learn — ${ruTitle}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImageUrl],
+    },
   };
 }
 
