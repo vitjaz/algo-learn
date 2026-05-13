@@ -3,17 +3,18 @@ import type { Metadata } from "next";
 import type {
   BinarySearchStep,
   BubbleSortStep,
+  MergeSortStep,
   QuickSortStep,
 } from "@/types/algorithm";
 import { getAlgorithm, algorithmModules } from "@/lib/algorithms";
 import { AlgorithmPageClient } from "./client";
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://algo-learn.alexeev-blog.ru";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
 
 const algorithmTitles: Record<string, string> = {
   "binary-search": "Бинарный поиск",
   "bubble-sort": "Сортировка пузырьком",
+  "merge-sort": "Сортировка слиянием",
   "quick-sort": "Быстрая сортировка",
 };
 
@@ -81,7 +82,11 @@ export default async function AlgorithmPage({ params }: AlgorithmPageProps) {
 
   const steps = mod.generateSteps(
     ...(Object.values(mod.defaultInput) as unknown[]),
-  ) as BinarySearchStep[] | BubbleSortStep[] | QuickSortStep[];
+  ) as
+    | BinarySearchStep[]
+    | BubbleSortStep[]
+    | MergeSortStep[]
+    | QuickSortStep[];
 
   return (
     <AlgorithmPageClient slug={slug} algorithm={algorithm} steps={steps} />

@@ -16,7 +16,15 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { categories } from "@/lib/algorithms";
-import { Search, ArrowUpDown, Binary, Bubbles, Zap, Code2 } from "lucide-react";
+import {
+  Search,
+  ArrowUpDown,
+  Binary,
+  Bubbles,
+  GitMerge,
+  Zap,
+  Code2,
+} from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   search: <Search />,
@@ -26,6 +34,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 const algorithmIcons: Record<string, React.ReactNode> = {
   "binary-search": <Binary />,
   "bubble-sort": <Bubbles />,
+  "merge-sort": <GitMerge />,
   "quick-sort": <Zap />,
 };
 

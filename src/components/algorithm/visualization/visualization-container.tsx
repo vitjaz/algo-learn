@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import type {
   BinarySearchStep,
   BubbleSortStep,
+  MergeSortStep,
   QuickSortStep,
 } from "@/types/algorithm";
 import {
@@ -14,10 +15,15 @@ import {
 } from "./visualization-controls";
 import { BinarySearchVisual } from "./binary-search-visual";
 import { BubbleSortVisual } from "./bubble-sort-visual";
+import { MergeSortVisual } from "./merge-sort-visual";
 import { QuickSortVisual } from "./quick-sort-visual";
 
 interface VisualizationContainerProps {
-  steps: BinarySearchStep[] | BubbleSortStep[] | QuickSortStep[];
+  steps:
+    | BinarySearchStep[]
+    | BubbleSortStep[]
+    | MergeSortStep[]
+    | QuickSortStep[];
   algorithmSlug: string;
 }
 
@@ -96,6 +102,8 @@ export function VisualizationContainer({
           <BinarySearchVisual step={step as BinarySearchStep} />
         ) : algorithmSlug === "quick-sort" ? (
           <QuickSortVisual step={step as QuickSortStep} />
+        ) : algorithmSlug === "merge-sort" ? (
+          <MergeSortVisual step={step as MergeSortStep} />
         ) : (
           <BubbleSortVisual step={step as BubbleSortStep} />
         )}

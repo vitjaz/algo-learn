@@ -1,0 +1,10 @@
+services:
+  app:
+    build: .
+    image: ghcr.io/vitjaz/algo-learn-next:latest
+    container_name: algo-learn
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production

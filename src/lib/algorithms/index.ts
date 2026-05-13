@@ -1,6 +1,7 @@
 import type { AlgorithmMeta } from "@/types/algorithm";
 import * as binarySearch from "./binary-search";
 import * as bubbleSort from "./bubble-sort";
+import * as mergeSort from "./merge-sort";
 import * as quickSort from "./quick-sort";
 
 export { categories } from "./categories";
@@ -22,6 +23,11 @@ export const algorithmModules: Record<string, AlgorithmModule> = {
     meta: bubbleSort.meta,
     generateSteps: bubbleSort.generateSteps,
     defaultInput: bubbleSort.defaultInput,
+  },
+  "merge-sort": {
+    meta: mergeSort.meta,
+    generateSteps: mergeSort.generateSteps,
+    defaultInput: mergeSort.defaultInput,
   },
   "quick-sort": {
     meta: quickSort.meta,

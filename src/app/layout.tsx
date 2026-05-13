@@ -16,8 +16,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://algo-learn.alexeev-blog.ru";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
 
 export const metadata: Metadata = {
   title: "Algo Learn — Изучайте алгоритмы через визуализации",

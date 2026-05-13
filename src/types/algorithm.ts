@@ -93,3 +93,25 @@ export interface QuickSortStep {
   descriptionKey: string;
   descriptionParams: Record<string, string | number>;
 }
+
+export type MergeSortStepType =
+  | "initial"
+  | "split"
+  | "compare"
+  | "place"
+  | "mergeComplete"
+  | "sorted";
+
+export interface MergeSortStep {
+  type: MergeSortStepType;
+  array: number[];
+  range: [number, number];
+  leftRange: [number, number] | null;
+  rightRange: [number, number] | null;
+  leftIndex: number | null;
+  rightIndex: number | null;
+  placing: number | null;
+  sortedIndices: number[];
+  descriptionKey: string;
+  descriptionParams: Record<string, string | number>;
+}

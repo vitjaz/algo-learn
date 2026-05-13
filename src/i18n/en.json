@@ -95,6 +95,21 @@
         "sorted": "Array is sorted!"
       }
     },
+    "merge-sort": {
+      "title": "Merge Sort",
+      "description": "Merge sort is an efficient, stable sorting algorithm that uses a divide-and-conquer strategy. It recursively splits the array into two halves, sorts each half, and then merges the sorted halves back together. The merge step is the key operation: it combines two sorted sub-arrays into one sorted array.",
+      "whyItMatters": "Merge sort guarantees O(n log n) time complexity in all cases, making it reliable for large datasets. It's the foundation for many external sorting algorithms used in databases and file systems. Understanding merge sort teaches you the divide-and-conquer paradigm and the concept of merging sorted sequences — a pattern used in merge joins, stream processing, and version control systems.",
+      "steps": {
+        "initial": "Initial state: unsorted array",
+        "split": "Splitting range [{left}..{right}] at midpoint {mid}",
+        "compare": "Comparing left element {leftVal} with right element {rightVal}",
+        "placeLeft": "Placing {value} at position {position} (from left half)",
+        "placeRight": "Placing {value} at position {position} (from right half)",
+        "placeRemaining": "Placing remaining element {value} at position {position}",
+        "mergeComplete": "Merge complete for range [{left}..{right}]",
+        "sorted": "Array is sorted!"
+      }
+    },
     "quick-sort": {
       "title": "Quick Sort",
       "description": "Quick sort is an efficient sorting algorithm that uses a divide-and-conquer strategy. It selects a pivot element and partitions the array into two sub-arrays: elements less than or equal to the pivot, and elements greater than the pivot. The sub-arrays are then sorted recursively.",

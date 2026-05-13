@@ -9,6 +9,6 @@ export const categories: Category[] = [
   {
     id: "sorting",
     slug: "sorting",
-    algorithms: ["bubble-sort", "quick-sort"],
+    algorithms: ["bubble-sort", "merge-sort", "quick-sort"],
   },
 ];

@@ -5,10 +5,10 @@ export const meta: AlgorithmMeta = {
   slug: "quick-sort",
   category: "sorting",
   complexity: {
-    best: "O(n log n)",
-    average: "O(n log n)",
+    best: "O(nlogn)",
+    average: "O(nlogn)",
     worst: "O(n²)",
-    space: "O(log n)",
+    space: "O(logn)",
   },
   leetcodeTasks: [
     {

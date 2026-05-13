@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import type {
   BinarySearchStep,
   BubbleSortStep,
+  MergeSortStep,
   QuickSortStep,
   AlgorithmMeta,
 } from "@/types/algorithm";
@@ -25,7 +26,11 @@ import Link from "next/link";
 interface AlgorithmPageClientProps {
   slug: string;
   algorithm: AlgorithmMeta;
-  steps: BinarySearchStep[] | BubbleSortStep[] | QuickSortStep[];
+  steps:
+    | BinarySearchStep[]
+    | BubbleSortStep[]
+    | MergeSortStep[]
+    | QuickSortStep[];
 }
 
 export function AlgorithmPageClient({
