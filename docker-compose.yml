@@ -1,7 +1,7 @@
 services:
   app:
     build: .
-    image: ghcr.io/vitjaz/algo-learn-next:latest
+    image: ghcr.io/vitjaz/algo-learn:latest
     container_name: algo-learn
     restart: unless-stopped
     ports:
