@@ -14,7 +14,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         <SidebarInset className="overflow-hidden">
           <div className="h-full overflow-y-auto">
             <div className="flex justify-center px-6 py-8 md:px-10 md:py-10 lg:px-16">
-              <div className="w-full max-w-4xl">{children}</div>
+              <div className="w-full max-w-6xl">{children}</div>
             </div>
           </div>
         </SidebarInset>

@@ -25,6 +25,7 @@
     "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming."
   },
   "algorithm": {
+    "tableOfContents": "On This Page",
     "description": "Description",
     "whyItMatters": "Why It Matters",
     "complexity": "Complexity",
