@@ -22,6 +22,10 @@ export const metadata: Metadata = {
   title: "Algo Learn — Изучайте алгоритмы через визуализации",
   description:
     "Интерактивные визуализации алгоритмов и структур данных для веб-разработчиков. Бинарный поиск, сортировка пузырьком, быстрая сортировка и другие.",
+  metadataBase: SITE_URL ? new URL(SITE_URL) : undefined,
+  alternates: {
+    canonical: SITE_URL || undefined,
+  },
   openGraph: {
     title: "Algo Learn — Изучайте алгоритмы через визуализации",
     description:

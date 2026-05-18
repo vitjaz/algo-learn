@@ -41,6 +41,9 @@ export async function generateMetadata({
   return {
     title,
     description,
+    alternates: {
+      canonical: `${SITE_URL}/algorithms/${slug}`,
+    },
     openGraph: {
       title,
       description,
@@ -88,7 +91,40 @@ export default async function AlgorithmPage({ params }: AlgorithmPageProps) {
     | MergeSortStep[]
     | QuickSortStep[];
 
+  const ruTitle = algorithmTitles[slug] || slug;
+  const description = `Изучите алгоритм «${ruTitle}» с интерактивными визуализациями. Пошаговые анимации, примеры кода и задачи на LeetCode.`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    headline: ruTitle,
+    description,
+    url: `${SITE_URL}/algorithms/${slug}`,
+    author: {
+      "@type": "Organization",
+      name: "Algo Learn",
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Algo Learn",
+      url: SITE_URL,
+    },
+    about: {
+      "@type": "Thing",
+      name: ruTitle,
+      description: `Алгоритм ${ruTitle}. Сложность: лучший случай — ${algorithm.complexity.best}, средний — ${algorithm.complexity.average}, худший — ${algorithm.complexity.worst}. Затраты памяти: ${algorithm.complexity.space}.`,
+    },
+    programmingLanguage: "TypeScript",
+  };
+
   return (
-    <AlgorithmPageClient slug={slug} algorithm={algorithm} steps={steps} />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <AlgorithmPageClient slug={slug} algorithm={algorithm} steps={steps} />
+    </>
   );
 }
