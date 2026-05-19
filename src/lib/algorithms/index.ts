@@ -1,4 +1,5 @@
 import type { AlgorithmMeta } from "@/types/algorithm";
+import type { ExtendedContentConfig } from "@/types/extended-content";
 import * as binarySearch from "./binary-search";
 import * as bubbleSort from "./bubble-sort";
 import * as mergeSort from "./merge-sort";
@@ -11,6 +12,7 @@ export interface AlgorithmModule {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   generateSteps: (...args: any[]) => any[];
   defaultInput: Record<string, unknown>;
+  extendedContent?: ExtendedContentConfig;
 }
 
 export const algorithmModules: Record<string, AlgorithmModule> = {
@@ -18,6 +20,7 @@ export const algorithmModules: Record<string, AlgorithmModule> = {
     meta: binarySearch.meta,
     generateSteps: binarySearch.generateSteps,
     defaultInput: binarySearch.defaultInput,
+    extendedContent: binarySearch.extendedContent,
   },
   "bubble-sort": {
     meta: bubbleSort.meta,

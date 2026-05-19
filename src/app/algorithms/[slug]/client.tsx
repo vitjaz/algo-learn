@@ -9,11 +9,15 @@ import type {
   QuickSortStep,
   AlgorithmMeta,
 } from "@/types/algorithm";
+import type { ExtendedContentConfig } from "@/types/extended-content";
 import { AlgorithmDescription } from "@/components/algorithm/algorithm-description";
 import { ComplexityTable } from "@/components/algorithm/complexity-table";
 import { CodeExample } from "@/components/algorithm/code-example";
 import { LeetCodeTasks } from "@/components/algorithm/leetcode-tasks";
 import { VisualizationContainer } from "@/components/algorithm/visualization/visualization-container";
+import { AlgorithmSteps } from "@/components/algorithm/algorithm-steps";
+import { AlgorithmAnalysis } from "@/components/algorithm/algorithm-analysis";
+import { AlgorithmApplications } from "@/components/algorithm/algorithm-applications";
 import {
   TableOfContents,
   type TocItem,
@@ -36,27 +40,58 @@ interface AlgorithmPageClientProps {
     | BubbleSortStep[]
     | MergeSortStep[]
     | QuickSortStep[];
+  extendedContent?: ExtendedContentConfig;
 }
 
+/**
+ * Fixed page order for all algorithms:
+ *   Description → Visualization → [Steps] → Complexity → [Analysis] → Code → [Applications] → LeetCode
+ */
 export function AlgorithmPageClient({
   slug,
   algorithm,
   steps,
+  extendedContent,
 }: AlgorithmPageClientProps) {
   const t = useTranslations();
   const tAlg = useTranslations("algorithm");
   const categoryId = algorithm.category;
 
-  const tocItems: TocItem[] = useMemo(
-    () => [
+  const tocItems: TocItem[] = useMemo(() => {
+    const items: TocItem[] = [
       { id: "description", label: tAlg("description") },
       { id: "visualization", label: tAlg("visualization.title") },
-      { id: "complexity", label: tAlg("complexity") },
-      { id: "code-example", label: tAlg("codeExample") },
-      { id: "leetcode-tasks", label: tAlg("leetcodeTasks") },
-    ],
-    [tAlg],
-  );
+    ];
+
+    if (extendedContent?.steps) {
+      items.push({
+        id: extendedContent.steps.id,
+        label: tAlg(extendedContent.steps.tocLabelKey),
+      });
+    }
+
+    items.push({ id: "complexity", label: tAlg("complexity") });
+
+    if (extendedContent?.analysis) {
+      items.push({
+        id: extendedContent.analysis.id,
+        label: tAlg(extendedContent.analysis.tocLabelKey),
+      });
+    }
+
+    items.push({ id: "code-example", label: tAlg("codeExample") });
+
+    if (extendedContent?.applications) {
+      items.push({
+        id: extendedContent.applications.id,
+        label: tAlg(extendedContent.applications.tocLabelKey),
+      });
+    }
+
+    items.push({ id: "leetcode-tasks", label: tAlg("leetcodeTasks") });
+
+    return items;
+  }, [tAlg, extendedContent]);
 
   return (
     <div className="flex gap-8 items-start">
@@ -93,10 +128,20 @@ export function AlgorithmPageClient({
           <VisualizationContainer steps={steps} algorithmSlug={slug} />
         </section>
 
+        {/* Steps: how the algorithm works */}
+        {extendedContent?.steps && (
+          <AlgorithmSteps config={extendedContent.steps} />
+        )}
+
         {/* Complexity */}
         <section id="complexity">
           <ComplexityTable complexity={algorithm.complexity} />
         </section>
+
+        {/* Analysis: detailed complexity breakdown */}
+        {extendedContent?.analysis && (
+          <AlgorithmAnalysis config={extendedContent.analysis} />
+        )}
 
         {/* Code Examples */}
         <section id="code-example">
@@ -105,6 +150,11 @@ export function AlgorithmPageClient({
             python={algorithm.codeExamples.python}
           />
         </section>
+
+        {/* Applications: real-world use cases */}
+        {extendedContent?.applications && (
+          <AlgorithmApplications config={extendedContent.applications} />
+        )}
 
         {/* LeetCode Tasks */}
         <section id="leetcode-tasks">

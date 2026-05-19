@@ -124,7 +124,12 @@ export default async function AlgorithmPage({ params }: AlgorithmPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <AlgorithmPageClient slug={slug} algorithm={algorithm} steps={steps} />
+      <AlgorithmPageClient
+        slug={slug}
+        algorithm={algorithm}
+        steps={steps}
+        extendedContent={mod.extendedContent}
+      />
     </>
   );
 }
