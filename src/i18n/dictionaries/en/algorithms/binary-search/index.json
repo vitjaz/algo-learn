@@ -1,0 +1,58 @@
+{
+  "title": "Binary Search",
+  "description": "Binary search is an algorithm for finding an element in a sorted array by repeatedly dividing the search interval in half. At each step, the algorithm compares the middle element of the array with the target value and eliminates the half where the element cannot exist.",
+  "whyItMatters": "Binary search is a fundamental algorithm constantly used in web development: searching sorted data, autocomplete, database index lookups, implementing bisect functions. Understanding binary search helps you grasp how database indexes work and why they're so fast.",
+  "howItWorks": {
+    "title": "How the Algorithm Works",
+    "intro": "Binary search is based on the divide-and-conquer principle. Instead of checking each element one by one (like linear search), the algorithm cuts the search space in half with every step.",
+    "step1Title": "1. Define Search Boundaries",
+    "step1": "Set two pointers: left (start of the array) and right (end of the array). These pointers define the current range where we're searching for the target element.",
+    "step2Title": "2. Find the Middle Element",
+    "step2": "Calculate the middle index: mid = left + (right - left) / 2. Using this formula instead of (left + right) / 2 prevents integer overflow when working with large arrays.",
+    "step3Title": "3. Compare with Target Value",
+    "step3": "Compare arr[mid] with the target value. There are three possible outcomes:",
+    "step3a": "arr[mid] == target — element found, return index mid.",
+    "step3b": "arr[mid] < target — the target is in the right half. Set left = mid + 1.",
+    "step3c": "arr[mid] > target — the target is in the left half. Set right = mid - 1.",
+    "step4Title": "4. Repeat or Finish",
+    "step4": "Repeat steps 2–3 while left ≤ right. If the pointers cross (left > right), the element is not in the array — return -1.",
+    "example": "Example: searching for 7 in array [1, 3, 5, 7, 9, 11, 13]",
+    "exampleStep1": "Step 1: left=0, right=6, mid=3 → arr[3]=7 == 7. Found in 1 step!",
+    "exampleStep2": "For comparison: with linear search in an array of 1,000,000 elements, binary search finds the element in at most 20 steps (log₂ 1,000,000 ≈ 20)."
+  },
+  "complexityAnalysis": {
+    "title": "Complexity Analysis",
+    "timeTitle": "Time Complexity",
+    "timeBest": "O(1) — best case, when the target element happens to be exactly in the middle of the array on the first step.",
+    "timeAverage": "O(log n) — average case. At each step, the algorithm discards half of the remaining elements. For an array of n elements, it takes at most ⌈log₂ n⌉ comparisons.",
+    "timeWorst": "O(log n) — worst case. The element is at the edge of the array or not present at all, but even then the number of steps depends logarithmically on the array size.",
+    "spaceTitle": "Space Complexity",
+    "spaceIterative": "O(1) — iterative implementation uses only a few variables (left, right, mid) that don't depend on the input size.",
+    "spaceRecursive": "O(log n) — recursive implementation uses a call stack of depth log₂ n.",
+    "comparisonTitle": "Comparison with Linear Search",
+    "comparison": "Linear search has O(n) complexity — in the worst case it checks all n elements. Binary search reduces this to O(log n). For an array of 1 billion elements: linear search — up to 1,000,000,000 steps, binary search — up to 30 steps."
+  },
+  "applications": {
+    "title": "Real-World Applications",
+    "app1Title": "Searching Sorted Data",
+    "app1": "Any sorted dataset is a perfect candidate for binary search. Dictionaries, phone books, reference tables — they all use the principle of halving the search space.",
+    "app2Title": "Database Indexes (B-Tree)",
+    "app2": "B-trees, which underpin indexes in PostgreSQL, MySQL, and other DBMS, use binary search at each level of the tree to quickly find the right page. This is why indexed lookups by ID work in milliseconds even on tables with billions of rows.",
+    "app3Title": "Python's bisect Module",
+    "app3": "The bisect module in Python's standard library implements binary search for inserting elements into a sorted list while maintaining order. Used for priority queues, running medians, and window functions.",
+    "app4Title": "Autocomplete and Prefix Search",
+    "app4": "When typing in a search box, the system finds the lower and upper bounds of matching suggestions using binary search on a sorted dictionary.",
+    "app5Title": "Boundary Detection (lower_bound / upper_bound)",
+    "app5": "Binary search is used to find the first element ≥ target (lower_bound) and the first element > target (upper_bound). This is the foundation for implementing sets and range queries in C++ STL.",
+    "app6Title": "Binary Search on the Answer",
+    "app6": "A paradoxical application: when a direct solution is hard, but you can check whether a candidate answer is \"good enough.\" Used in optimization problems: minimum time, maximum distance, minimum weight — if the answer can be verified in polynomial time."
+  },
+  "steps": {
+    "initial": "Initial state: sorted array and target value {target}",
+    "compare": "Comparing middle element arr[{mid}] = {value} with target {target}",
+    "found": "Found! Element arr[{mid}] = {value} equals target {target}",
+    "goRight": "arr[{mid}] = {value} < {target}, excluding left half, searching right",
+    "goLeft": "arr[{mid}] = {value} > {target}, excluding right half, searching left",
+    "notFound": "Target element {target} not found in array"
+  }
+}

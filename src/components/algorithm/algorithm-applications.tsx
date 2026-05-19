@@ -9,6 +9,9 @@ import {
   Lightbulb,
   ArrowRightLeft,
   Target,
+  GraduationCap,
+  CheckCircle,
+  Network,
   type LucideIcon,
 } from "lucide-react";
 
@@ -19,6 +22,9 @@ const iconMap: Record<string, LucideIcon> = {
   lightbulb: Lightbulb,
   "arrow-right-left": ArrowRightLeft,
   target: Target,
+  "graduation-cap": GraduationCap,
+  "check-circle": CheckCircle,
+  network: Network,
 };
 
 export function AlgorithmApplications({

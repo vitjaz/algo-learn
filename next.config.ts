@@ -1,10 +1,13 @@
 import type { NextConfig } from "next";
-import createNextIntlPlugin from "next-intl/plugin";
+import createNextIntlSplitPlugin from "next-intl-split/plugin";
 
-const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
+const withNextIntlSplit = createNextIntlSplitPlugin(
+  "./src/i18n/dictionaries",
+  "./src/i18n/request.ts",
+);
 
 const nextConfig: NextConfig = {
   output: "standalone",
 };
 
-export default withNextIntl(nextConfig);
+export default withNextIntlSplit(nextConfig);

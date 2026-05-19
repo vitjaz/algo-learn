@@ -1,11 +1,18 @@
 "use client";
 
 import { NextIntlClientProvider } from "next-intl";
-import { type ReactNode, useState, createContext, useContext, useSyncExternalStore } from "react";
+import {
+  type ReactNode,
+  useState,
+  createContext,
+  useContext,
+  useSyncExternalStore,
+} from "react";
 
 // Import both locales statically for client-side switching
-import ruMessages from "@/i18n/ru.json";
-import enMessages from "@/i18n/en.json";
+// next-intl-split plugin generates these merged files at build time
+import ruMessages from "@/i18n/dictionaries/ru.json";
+import enMessages from "@/i18n/dictionaries/en.json";
 
 const allMessages: Record<string, Record<string, unknown>> = {
   ru: ruMessages,
@@ -18,7 +25,7 @@ const DEFAULT_LOCALE = "ru";
 function getCookieLocale(): string {
   if (typeof document === "undefined") return DEFAULT_LOCALE;
   const match = document.cookie.match(
-    new RegExp(`(?:^|; )${LOCALE_COOKIE}=([^;]*)`)
+    new RegExp(`(?:^|; )${LOCALE_COOKIE}=([^;]*)`),
   );
   const value = match ? decodeURIComponent(match[1]) : null;
   return value && ["ru", "en"].includes(value) ? value : DEFAULT_LOCALE;
@@ -32,7 +39,11 @@ function setCookieLocale(locale: string) {
 const emptySubscribe = () => () => {};
 
 function useCookieLocale() {
-  return useSyncExternalStore(emptySubscribe, getCookieLocale, () => DEFAULT_LOCALE);
+  return useSyncExternalStore(
+    emptySubscribe,
+    getCookieLocale,
+    () => DEFAULT_LOCALE,
+  );
 }
 
 interface LocaleContextValue {

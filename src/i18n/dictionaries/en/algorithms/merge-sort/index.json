@@ -1,0 +1,59 @@
+{
+  "title": "Merge Sort",
+  "description": "Merge sort is an efficient, stable sorting algorithm that uses a divide-and-conquer strategy. It recursively splits the array into two halves, sorts each half, and then merges the sorted halves back together. The merge step is the key operation: it combines two sorted sub-arrays into one sorted array.",
+  "whyItMatters": "Merge sort guarantees O(n log n) time complexity in all cases, making it reliable for large datasets. It's the foundation for many external sorting algorithms used in databases and file systems. Understanding merge sort teaches you the divide-and-conquer paradigm and the concept of merging sorted sequences — a pattern used in merge joins, stream processing, and version control systems.",
+  "howItWorks": {
+    "title": "How the Algorithm Works",
+    "intro": "Merge sort is a classic divide-and-conquer algorithm. It works by recursively splitting the array into smaller sub-arrays until each contains a single element, then merging them back together in sorted order.",
+    "step1Title": "1. Divide the Array",
+    "step1": "Split the array into two halves at the midpoint. If the array has 1 or 0 elements, it's already sorted — this is the base case for recursion.",
+    "step2Title": "2. Recursively Sort Each Half",
+    "step2": "Apply merge sort recursively to the left half and the right half. Each recursive call splits further until reaching sub-arrays of size 1.",
+    "step3Title": "3. Merge Two Sorted Halves",
+    "step3": "Combine two sorted sub-arrays into one sorted array using a two-pointer technique:",
+    "step3a": "Compare the first elements of each half. Take the smaller one and advance that pointer.",
+    "step3b": "When one half is exhausted, copy all remaining elements from the other half.",
+    "step4Title": "4. Return the Result",
+    "step4": "The merged array is now fully sorted. Return it up the recursion chain. After all merges complete, the entire array is sorted.",
+    "example": "Example: sorting array [38, 27, 43, 3]",
+    "exampleStep1": "Split: [38, 27, 43, 3] → [38, 27] and [43, 3] → [38], [27], [43], [3] (single elements).",
+    "exampleStep2": "Merge: [27, 38] and [3, 43] → compare 27 vs 3 → take 3 → compare 27 vs 43 → take 27 → ... → [3, 27, 38, 43]."
+  },
+  "complexityAnalysis": {
+    "title": "Complexity Analysis",
+    "timeTitle": "Time Complexity",
+    "timeBest": "O(n log n) — even in the best case, merge sort still performs all the split and merge operations. The number of levels is log₂ n, and each level does O(n) work for merging.",
+    "timeAverage": "O(n log n) — the average case is the same as best and worst. Merge sort's performance is deterministic and doesn't depend on the input data distribution.",
+    "timeWorst": "O(n log n) — unlike quick sort, merge sort has no degenerate case. It always divides the array evenly and merges in linear time at each level.",
+    "spaceTitle": "Space Complexity",
+    "spaceAuxiliary": "O(n) — merge sort requires additional temporary arrays for the merge step. At each level of recursion, auxiliary arrays of total size n are created.",
+    "spaceStable": "Stable sort — equal elements maintain their relative order because during merging, when elements are equal, the left half's element is taken first (left[i] <= right[j]).",
+    "comparisonTitle": "Comparison with Quick Sort",
+    "comparison": "Quick sort has O(n log n) average time but O(n²) worst case, while merge sort guarantees O(n log n) in all cases. However, merge sort uses O(n) extra memory, whereas quick sort works in-place with O(log n) stack space. In practice, quick sort is often faster due to better cache locality."
+  },
+  "applications": {
+    "title": "Real-World Applications",
+    "app1Title": "External Sorting in Databases",
+    "app1": "When data doesn't fit in memory, databases use external merge sort: sorted runs are written to disk and then merged in passes. This is how PostgreSQL and other DBMS sort large datasets during ORDER BY and CREATE INDEX operations.",
+    "app2Title": "Standard Library Sort (Stable)",
+    "app2": "Many languages use merge sort (or its variant, Timsort) as the stable sorting algorithm. Python's sorted(), Java's Collections.sort() for objects, and Rust's stable sort all rely on merge sort under the hood.",
+    "app3Title": "Merge Joins in SQL",
+    "app3": "The merge join algorithm in SQL databases works like the merge step of merge sort: two sorted streams are combined in a single pass. This is one of the most efficient join strategies when both inputs are already sorted.",
+    "app4Title": "Counting Inversions",
+    "app4": "A classic problem: count how many pairs (i, j) exist where i < j but arr[i] > arr[j]. Merge sort can be modified to count inversions during the merge step in O(n log n) time — used in recommendation systems and measuring data similarity.",
+    "app5Title": "Stream Processing and Event Merging",
+    "app5": "When merging multiple sorted event streams (logs, time-series data, Kafka topics), the merge step of merge sort is used directly. This pattern appears in distributed systems, log aggregation, and time-series databases.",
+    "app6Title": "Version Control (3-Way Merge)",
+    "app6": "Git and other version control systems use merge algorithms based on the longest common subsequence and merge sort principles to combine changes from different branches into a single result."
+  },
+  "steps": {
+    "initial": "Initial state: unsorted array",
+    "split": "Splitting range [{left}..{right}] at midpoint {mid}",
+    "compare": "Comparing left element {leftVal} with right element {rightVal}",
+    "placeLeft": "Placing {value} at position {position} (from left half)",
+    "placeRight": "Placing {value} at position {position} (from right half)",
+    "placeRemaining": "Placing remaining element {value} at position {position}",
+    "mergeComplete": "Merge complete for range [{left}..{right}]",
+    "sorted": "Array is sorted!"
+  }
+}
