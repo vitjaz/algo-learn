@@ -1,4 +1,5 @@
 import type { AlgorithmMeta } from "@/types/algorithm";
+import type { ExtendedContentConfig } from "@/types/extended-content";
 import { generateBubbleSortSteps } from "./steps";
 
 export const meta: AlgorithmMeta = {
@@ -91,4 +92,61 @@ export const generateSteps = generateBubbleSortSteps;
 
 export const defaultInput = {
   array: [64, 34, 25, 12, 22, 11, 90],
+};
+
+export const extendedContent: ExtendedContentConfig = {
+  steps: {
+    id: "how-it-works",
+    tocLabelKey: "howItWorks",
+    i18nBase: "algorithms.bubble-sort.howItWorks",
+    introKey: "intro",
+    callout: {
+      titleKey: "example",
+      descriptionKeys: ["exampleStep1", "exampleStep2"],
+      mono: true,
+    },
+    items: [
+      { titleKey: "step1Title", descriptionKey: "step1" },
+      { titleKey: "step2Title", descriptionKey: "step2" },
+      {
+        titleKey: "step3Title",
+        descriptionKey: "step3",
+        subItemKeys: ["step3a", "step3b"],
+      },
+      { titleKey: "step4Title", descriptionKey: "step4" },
+    ],
+  },
+  analysis: {
+    id: "complexity-analysis",
+    tocLabelKey: "complexityAnalysis",
+    i18nBase: "algorithms.bubble-sort.complexityAnalysis",
+    items: [
+      {
+        titleKey: "timeTitle",
+        descriptionKeys: ["timeBest", "timeAverage", "timeWorst"],
+        icon: "zap",
+      },
+      {
+        titleKey: "spaceTitle",
+        descriptionKeys: ["spaceInPlace", "spaceStable"],
+        icon: "database",
+      },
+    ],
+    callout: {
+      titleKey: "optimizationTitle",
+      descriptionKeys: ["optimization"],
+    },
+  },
+  applications: {
+    id: "applications",
+    tocLabelKey: "applications",
+    i18nBase: "algorithms.bubble-sort.applications",
+    items: [
+      { titleKey: "app1Title", descriptionKey: "app1", icon: "graduation-cap" },
+      { titleKey: "app2Title", descriptionKey: "app2", icon: "check-circle" },
+      { titleKey: "app3Title", descriptionKey: "app3", icon: "network" },
+      { titleKey: "app4Title", descriptionKey: "app4", icon: "code" },
+      { titleKey: "app5Title", descriptionKey: "app5", icon: "lightbulb" },
+    ],
+  },
 };

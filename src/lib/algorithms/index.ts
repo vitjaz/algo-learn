@@ -26,16 +26,19 @@ export const algorithmModules: Record<string, AlgorithmModule> = {
     meta: bubbleSort.meta,
     generateSteps: bubbleSort.generateSteps,
     defaultInput: bubbleSort.defaultInput,
+    extendedContent: bubbleSort.extendedContent,
   },
   "merge-sort": {
     meta: mergeSort.meta,
     generateSteps: mergeSort.generateSteps,
     defaultInput: mergeSort.defaultInput,
+    extendedContent: mergeSort.extendedContent,
   },
   "quick-sort": {
     meta: quickSort.meta,
     generateSteps: quickSort.generateSteps,
     defaultInput: quickSort.defaultInput,
+    extendedContent: quickSort.extendedContent,
   },
 };
 
