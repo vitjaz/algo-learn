@@ -1,5 +1,6 @@
 import { getRequestConfig } from "next-intl/server";
 import { cookies } from "next/headers";
+import { loadI18nTranslations } from "next-intl-split/load";
 
 export default getRequestConfig(async () => {
   let locale = "ru";
@@ -14,9 +15,11 @@ export default getRequestConfig(async () => {
     // cookies() not available during static generation, use default
   }
 
+  const messages = loadI18nTranslations("./src/i18n/dictionaries", locale);
+
   return {
     locale,
-    messages: (await import(`./${locale}.json`)).default,
+    messages,
     timeZone: "Europe/Moscow",
   };
 });

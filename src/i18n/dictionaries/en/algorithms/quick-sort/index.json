@@ -1,0 +1,57 @@
+{
+  "title": "Quick Sort",
+  "description": "Quick sort is an efficient sorting algorithm that uses a divide-and-conquer strategy. It selects a pivot element and partitions the array into two sub-arrays: elements less than or equal to the pivot, and elements greater than the pivot. The sub-arrays are then sorted recursively.",
+  "whyItMatters": "Quick sort is one of the most widely used sorting algorithms in practice. It's the default sorting algorithm in many programming languages and standard libraries. Understanding quick sort teaches you the divide-and-conquer paradigm, which is fundamental to many efficient algorithms.",
+  "howItWorks": {
+    "title": "How the Algorithm Works",
+    "intro": "Quick sort uses the divide-and-conquer strategy: it picks a pivot element, partitions the array around it so that smaller elements go left and larger elements go right, then recursively sorts both sides.",
+    "step1Title": "1. Choose a Pivot",
+    "step1": "Select an element from the array to use as the pivot. Common strategies: last element, first element, random element, or median-of-three. The pivot choice affects performance but not correctness.",
+    "step2Title": "2. Partition the Array",
+    "step2": "Rearrange elements so that all values less than or equal to the pivot come before it, and all values greater come after it. After partitioning, the pivot is in its final sorted position.",
+    "step3Title": "3. Recursively Sort Sub-arrays",
+    "step3": "Apply quick sort to the left sub-array (elements before pivot) and the right sub-array (elements after pivot):",
+    "step3a": "Left sub-array: all elements ≤ pivot — sort recursively.",
+    "step3b": "Right sub-array: all elements > pivot — sort recursively.",
+    "step4Title": "4. Base Case",
+    "step4": "When a sub-array has 0 or 1 elements, it's already sorted — stop recursion. After all recursive calls complete, the entire array is sorted.",
+    "example": "Example: sorting array [10, 80, 30, 90, 40, 50, 70] with pivot = 70",
+    "exampleStep1": "Partition: [10, 30, 40, 50] < 70 < [80, 90]. Pivot 70 is now at index 4 (final position).",
+    "exampleStep2": "Recurse left: [10, 30, 40, 50] → already partitioned. Recurse right: [80, 90] → 80 < 90, done. Result: [10, 30, 40, 50, 70, 80, 90]."
+  },
+  "complexityAnalysis": {
+    "title": "Complexity Analysis",
+    "timeTitle": "Time Complexity",
+    "timeBest": "O(n log n) — best case occurs when the pivot always divides the array into two roughly equal halves. This gives log₂ n levels of recursion, each doing O(n) work for partitioning.",
+    "timeAverage": "O(n log n) — on average, quick sort performs very well. Random pivot selection makes the expected depth of recursion O(log n), giving O(n log n) total work.",
+    "timeWorst": "O(n²) — worst case occurs when the pivot is always the smallest or largest element (e.g., already sorted array with last-element pivot). This creates n levels of recursion with O(n) work each.",
+    "spaceTitle": "Space Complexity",
+    "spaceInPlace": "O(log n) — quick sort works in-place (no extra arrays), but the recursion stack uses O(log n) space on average. In the worst case, the stack can grow to O(n).",
+    "spaceNotStable": "Not stable — equal elements may change their relative order during partitioning. If stability is required, merge sort is preferred.",
+    "pivotTitle": "Pivot Selection Strategies",
+    "pivotStrategy": "The choice of pivot critically affects performance. Last/first element — simple but O(n²) on sorted data. Random element — good expected performance. Median-of-three — examines first, middle, last and picks the median, providing good practical performance. Introselect (used in std::sort) — switches to heap sort if recursion depth exceeds 2·log(n)."
+  },
+  "applications": {
+    "title": "Real-World Applications",
+    "app1Title": "Standard Library Sort",
+    "app1": "Many programming languages use quick sort (or its hybrid variants) as the default sorting algorithm. C's qsort(), C++'s std::sort (introsort — quick sort + heap sort), and Java's Arrays.sort() for primitive types all rely on quick sort.",
+    "app2Title": "Database Query Optimization",
+    "app2": "Databases use quick sort for in-memory sorting of query results. When the optimizer chooses a sort-based plan, quick sort's cache efficiency makes it faster than merge sort for data that fits in RAM.",
+    "app3Title": "Order Statistics (Kth Element)",
+    "app3": "Quick select — a variant of quick sort — finds the kth smallest element in O(n) average time. Used for finding medians, percentiles, and top-K elements without fully sorting the data.",
+    "app4Title": "Numerical Algorithms",
+    "app4": "Quick sort and its variants are used in computational geometry (e.g., sorting points for convex hull), signal processing, and numerical analysis where in-place sorting with good cache performance is critical.",
+    "app5Title": "Partitioning Problems",
+    "app5": "The partition step of quick sort is a standalone useful operation: separating passing/failing students, dividing data into above/below threshold groups, or implementing the Dutch National Flag problem (Sort Colors on LeetCode)."
+  },
+  "steps": {
+    "initial": "Initial state: unsorted array",
+    "selectPivot": "Selecting pivot element {pivot} at index {index}",
+    "compare": "Comparing arr[{index}] = {value} with pivot {pivot}",
+    "swap": "Swapping arr[{indexI}] = {valI} and arr[{indexJ}] = {valJ}",
+    "noSwap": "Element {value} at index {index} is in correct partition",
+    "noSwapGreater": "{value} > {pivot}, stays in right partition",
+    "pivotPlaced": "Pivot {pivot} placed at position {position}",
+    "sorted": "Array is sorted!"
+  }
+}

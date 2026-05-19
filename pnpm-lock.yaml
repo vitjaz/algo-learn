@@ -32,6 +32,9 @@ importers:
       next-intl:
         specifier: ^4.11.1
         version: 4.11.1(next@16.2.6(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))(react@19.2.4)(typescript@5.9.3)
+      next-intl-split:
+        specifier: ^1.2.10
+        version: 1.2.10
       next-themes:
         specifier: ^0.4.6
         version: 0.4.6(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -2494,6 +2497,9 @@ packages:
   negotiator@1.0.0:
     resolution: {integrity: sha512-8Ofs/AUQh8MaEcrlq5xOX0CQ9ypTF5dl78mjlMNfOK08fzpgTHQRQPBxcPlEtIw0yRpws+Zo/3r+5WRby7u3Gg==}
     engines: {node: '>= 0.6'}
+
+  next-intl-split@1.2.10:
+    resolution: {integrity: sha512-cEEsLrPLL0yhhDV3YC9a1K8yb1f2u0pIOkcEyS8t4ENJwtLYOWeAwqik9JCE8VEKjQ5uoFbLnZ9tdsQDAynz0Q==}
 
   next-intl-swc-plugin-extractor@4.11.1:
     resolution: {integrity: sha512-jHKGij7NoYccy2y54+e/wHVMoRgNt4h/Kn0XS9c4GbKu3KgJyANLUN8sFcDixv6sqz4V2kh6CTWgrkIidQksUg==}
@@ -5681,6 +5687,8 @@ snapshots:
   natural-compare@1.4.0: {}
 
   negotiator@1.0.0: {}
+
+  next-intl-split@1.2.10: {}
 
   next-intl-swc-plugin-extractor@4.11.1: {}
 

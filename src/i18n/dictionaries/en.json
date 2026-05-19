@@ -1,29 +1,4 @@
 {
-  "common": {
-    "siteName": "Algo Learn",
-    "siteDescription": "Learning algorithms and data structures for web developers",
-    "madeWithLove": "Made with love",
-    "language": "Language",
-    "theme": "Theme",
-    "lightTheme": "Light",
-    "darkTheme": "Dark",
-    "sidebarToggle": "Menu",
-    "collapseSidebar": "Collapse",
-    "expandSidebar": "Expand"
-  },
-  "categories": {
-    "search": "Search Algorithms",
-    "sorting": "Sorting Algorithms"
-  },
-  "home": {
-    "heroTitle": "Algo Learn",
-    "heroSubtitle": "Learn algorithms through interactive visualizations",
-    "heroDescription": "Understanding algorithms and data structures is a key skill for developers. We help you master them through clear animations and step-by-step visualizations.",
-    "startLearning": "Start Learning",
-    "quickNavTitle": "Algorithm Categories",
-    "searchDesc": "Search algorithms help find elements in data structures quickly and efficiently.",
-    "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming."
-  },
   "algorithm": {
     "tableOfContents": "On This Page",
     "description": "Description",
@@ -71,6 +46,31 @@
         "pivot": "Pivot"
       }
     }
+  },
+  "categories": {
+    "search": "Search Algorithms",
+    "sorting": "Sorting Algorithms"
+  },
+  "common": {
+    "siteName": "Algo Learn",
+    "siteDescription": "Learning algorithms and data structures for web developers",
+    "madeWithLove": "Made with love",
+    "language": "Language",
+    "theme": "Theme",
+    "lightTheme": "Light",
+    "darkTheme": "Dark",
+    "sidebarToggle": "Menu",
+    "collapseSidebar": "Collapse",
+    "expandSidebar": "Expand"
+  },
+  "home": {
+    "heroTitle": "Algo Learn",
+    "heroSubtitle": "Learn algorithms through interactive visualizations",
+    "heroDescription": "Understanding algorithms and data structures is a key skill for developers. We help you master them through clear animations and step-by-step visualizations.",
+    "startLearning": "Start Learning",
+    "quickNavTitle": "Algorithm Categories",
+    "searchDesc": "Search algorithms help find elements in data structures quickly and efficiently.",
+    "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming."
   },
   "algorithms": {
     "binary-search": {

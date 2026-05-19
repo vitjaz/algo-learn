@@ -1,0 +1,12 @@
+{
+  "siteName": "Algo Learn",
+  "siteDescription": "Изучение алгоритмов и структур данных для веб-разработчиков",
+  "madeWithLove": "Сделано с любовью",
+  "language": "Язык",
+  "theme": "Тема",
+  "lightTheme": "Светлая",
+  "darkTheme": "Тёмная",
+  "sidebarToggle": "Меню",
+  "collapseSidebar": "Свернуть",
+  "expandSidebar": "Развернуть"
+}

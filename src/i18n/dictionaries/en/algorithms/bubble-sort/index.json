@@ -1,0 +1,55 @@
+{
+  "title": "Bubble Sort",
+  "description": "Bubble sort is a simple sorting algorithm that repeatedly walks through the array, compares adjacent elements, and swaps them if they are in the wrong order. The process repeats until the array is fully sorted.",
+  "whyItMatters": "While bubble sort is rarely used in production due to its inefficiency, it's an excellent learning algorithm for understanding sorting principles, element comparison, and value swapping. It's the foundation for understanding more complex sorting algorithms.",
+  "howItWorks": {
+    "title": "How the Algorithm Works",
+    "intro": "Bubble sort gets its name from the way larger elements gradually \"bubble up\" to the end of the array, like air bubbles rising in water. The algorithm makes multiple passes through the array, swapping adjacent elements that are out of order.",
+    "step1Title": "1. Start from the Beginning",
+    "step1": "Begin at the first element of the array. We'll compare each pair of adjacent elements during a left-to-right pass.",
+    "step2Title": "2. Compare Adjacent Elements",
+    "step2": "Compare the current element with the next one. If the current element is greater than the next, they are in the wrong order.",
+    "step3Title": "3. Swap if Needed",
+    "step3": "If the elements are out of order, swap them. There are two possible outcomes:",
+    "step3a": "arr[j] > arr[j+1] — swap the elements, the larger one moves right.",
+    "step3b": "arr[j] ≤ arr[j+1] — no swap needed, move to the next pair.",
+    "step4Title": "4. Repeat Passes",
+    "step4": "After one complete pass, the largest unsorted element is guaranteed to be at the end. Repeat passes for the remaining unsorted portion until no swaps are needed — the array is sorted.",
+    "example": "Example: sorting array [5, 3, 8, 1, 2]",
+    "exampleStep1": "Pass 1: [5,3,8,1,2] → [3,5,8,1,2] → [3,5,8,1,2] → [3,5,1,8,2] → [3,5,1,2,8]. Largest element 8 is now at the end.",
+    "exampleStep2": "Pass 2: [3,5,1,2,8] → [3,5,1,2,8] → [3,1,5,2,8] → [3,1,2,5,8]. Element 5 is in place. Continue until sorted: [1,2,3,5,8]."
+  },
+  "complexityAnalysis": {
+    "title": "Complexity Analysis",
+    "timeTitle": "Time Complexity",
+    "timeBest": "O(n) — best case occurs when the array is already sorted. With the optimization (checking if any swaps occurred), the algorithm makes only one pass and terminates early.",
+    "timeAverage": "O(n²) — average case. For a randomly ordered array, the algorithm makes approximately n²/2 comparisons and n²/4 swaps on average.",
+    "timeWorst": "O(n²) — worst case, when the array is sorted in reverse order. Every pair of adjacent elements needs to be swapped on every pass, resulting in n·(n-1)/2 comparisons.",
+    "spaceTitle": "Space Complexity",
+    "spaceInPlace": "O(1) — bubble sort is an in-place algorithm. It only uses a constant amount of additional memory for temporary variables during swapping (and the swapped flag for optimization).",
+    "spaceStable": "Stable sort — equal elements never change their relative order because swaps only happen when arr[j] > arr[j+1] (strictly greater), not when equal.",
+    "optimizationTitle": "Early Termination Optimization",
+    "optimization": "The key optimization is tracking whether any swaps occurred during a pass. If a complete pass finishes without any swaps, the array is already sorted and the algorithm can stop immediately. This improves best-case performance from O(n²) to O(n)."
+  },
+  "applications": {
+    "title": "Real-World Applications",
+    "app1Title": "Teaching Sorting Concepts",
+    "app1": "Bubble sort is the most intuitive sorting algorithm for beginners. It clearly demonstrates the core concepts: comparing elements, swapping values, and repeating until sorted. Most computer science courses start with bubble sort.",
+    "app2Title": "Nearly Sorted Data",
+    "app2": "When data is already nearly sorted (only a few elements out of place), bubble sort with early termination can be quite efficient — it finishes in O(n) time with just one or two passes.",
+    "app3Title": "Small Datasets",
+    "app3": "For very small arrays (5–10 elements), bubble sort's simplicity can make it competitive with more complex algorithms due to low overhead and good cache locality.",
+    "app4Title": "Checking if an Array Is Sorted",
+    "app4": "A single pass of bubble sort (without swaps) is essentially an O(n) check for whether an array is already sorted — useful as a pre-check before running a more expensive algorithm.",
+    "app5Title": "Graphics and Polygon Filling",
+    "app5": "In computer graphics, bubble sort is sometimes used for small lists in polygon filling algorithms and depth sorting, where the number of elements is tiny and simplicity matters more than asymptotic performance."
+  },
+  "steps": {
+    "initial": "Initial state: unsorted array",
+    "compare": "Comparing arr[{i}] = {valI} and arr[{j}] = {valJ}",
+    "swap": "Swapping: {valI} > {valJ}",
+    "noSwap": "No swap: {valI} ≤ {valJ}",
+    "passComplete": "Pass {pass} complete. Largest element has 'bubbled up' to the end.",
+    "sorted": "Array is sorted!"
+  }
+}

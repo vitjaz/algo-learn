@@ -1,0 +1,48 @@
+{
+  "tableOfContents": "On This Page",
+  "description": "Description",
+  "whyItMatters": "Why It Matters",
+  "howItWorks": "How It Works",
+  "complexityAnalysis": "Complexity Analysis",
+  "applications": "Real-World Applications",
+  "complexity": "Complexity",
+  "bestCase": "Best Case",
+  "averageCase": "Average Case",
+  "worstCase": "Worst Case",
+  "spaceComplexity": "Space Complexity",
+  "codeExample": "Code Example",
+  "leetcodeTasks": "LeetCode Problems",
+  "leetcodeDifficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "visualization": {
+    "title": "Visualization",
+    "play": "Play",
+    "pause": "Pause",
+    "stepForward": "Step Forward",
+    "stepBack": "Step Back",
+    "reset": "Reset",
+    "speed": "Speed",
+    "speedSlow": "Slow",
+    "speedNormal": "Normal",
+    "speedFast": "Fast",
+    "step": "Step",
+    "of": "of",
+    "pass": "Pass",
+    "range": "Range",
+    "pivot": "Pivot",
+    "legend": {
+      "range": "Range",
+      "mid": "Mid",
+      "found": "Found",
+      "eliminated": "Eliminated",
+      "unsorted": "Unsorted",
+      "comparing": "Comparing",
+      "swapping": "Swapping",
+      "sorted": "Sorted",
+      "pivot": "Pivot"
+    }
+  }
+}

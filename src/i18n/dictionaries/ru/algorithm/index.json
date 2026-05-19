@@ -1,0 +1,48 @@
+{
+  "tableOfContents": "Содержание",
+  "description": "Описание",
+  "whyItMatters": "Зачем это нужно",
+  "howItWorks": "Как работает алгоритм",
+  "complexityAnalysis": "Анализ сложности",
+  "applications": "Примеры использования",
+  "complexity": "Сложность",
+  "bestCase": "Лучший случай",
+  "averageCase": "Средний случай",
+  "worstCase": "Худший случай",
+  "spaceComplexity": "Сложность по памяти",
+  "codeExample": "Пример кода",
+  "leetcodeTasks": "Задачи на LeetCode",
+  "leetcodeDifficulty": {
+    "easy": "Лёгкая",
+    "medium": "Средняя",
+    "hard": "Сложная"
+  },
+  "visualization": {
+    "title": "Визуализация",
+    "play": "Запустить",
+    "pause": "Пауза",
+    "stepForward": "Шаг вперёд",
+    "stepBack": "Шаг назад",
+    "reset": "Сброс",
+    "speed": "Скорость",
+    "speedSlow": "Медленно",
+    "speedNormal": "Обычно",
+    "speedFast": "Быстро",
+    "step": "Шаг",
+    "of": "из",
+    "pass": "Проход",
+    "range": "Диапазон",
+    "pivot": "Опорный",
+    "legend": {
+      "range": "Диапазон",
+      "mid": "Середина",
+      "found": "Найдено",
+      "eliminated": "Исключено",
+      "unsorted": "Неотсортировано",
+      "comparing": "Сравнение",
+      "swapping": "Обмен",
+      "sorted": "Отсортировано",
+      "pivot": "Опорный"
+    }
+  }
+}
