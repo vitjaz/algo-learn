@@ -5,6 +5,7 @@ import { generateBinarySearchSteps } from "./steps";
 export const meta: AlgorithmMeta = {
   slug: "binary-search",
   category: "search",
+  difficulty: "easy",
   complexity: {
     best: "O(1)",
     average: "O(log n)",

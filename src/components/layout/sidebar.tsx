@@ -15,7 +15,8 @@ import {
   SidebarFooter,
   SidebarRail,
 } from "@/components/ui/sidebar";
-import { categories } from "@/lib/algorithms";
+import { categories, algorithmModules } from "@/lib/algorithms";
+import { DifficultyBadge } from "./difficulty-badge";
 import {
   Search,
   ArrowUpDown,
@@ -24,6 +25,7 @@ import {
   GitMerge,
   Zap,
   Code2,
+  MoveRight,
 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -34,6 +36,7 @@ const categoryIcons: Record<string, React.ReactNode> = {
 const algorithmIcons: Record<string, React.ReactNode> = {
   "binary-search": <Binary />,
   "bubble-sort": <Bubbles />,
+  "insertion-sort": <MoveRight />,
   "merge-sort": <GitMerge />,
   "quick-sort": <Zap />,
 };
@@ -56,6 +59,8 @@ export function AppSidebar() {
                 {category.algorithms.map((slug) => {
                   const href = `/algorithms/${slug}`;
                   const isActive = pathname === href;
+                  const difficulty =
+                    algorithmModules[slug]?.meta.difficulty ?? "medium";
                   return (
                     <SidebarMenuItem key={slug}>
                       <SidebarMenuButton
@@ -65,6 +70,7 @@ export function AppSidebar() {
                       >
                         {algorithmIcons[slug] ?? <Code2 />}
                         <span>{t(`algorithms.${slug}.title`)}</span>
+                        <DifficultyBadge difficulty={difficulty} />
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                   );

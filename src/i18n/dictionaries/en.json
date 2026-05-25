@@ -1,5 +1,10 @@
 {
   "algorithm": {
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
     "tableOfContents": "On This Page",
     "description": "Description",
     "whyItMatters": "Why It Matters",
@@ -42,8 +47,10 @@
         "unsorted": "Unsorted",
         "comparing": "Comparing",
         "swapping": "Swapping",
+        "shifting": "Shifting",
         "sorted": "Sorted",
-        "pivot": "Pivot"
+        "pivot": "Pivot",
+        "key": "Key"
       }
     }
   },
@@ -183,6 +190,61 @@
         "swap": "Swapping: {valI} > {valJ}",
         "noSwap": "No swap: {valI} ≤ {valJ}",
         "passComplete": "Pass {pass} complete. Largest element has 'bubbled up' to the end.",
+        "sorted": "Array is sorted!"
+      }
+    },
+    "insertion-sort": {
+      "title": "Insertion Sort",
+      "description": "Insertion sort is a simple sorting algorithm that builds the final sorted array one element at a time. It works similarly to how you sort playing cards in your hands — you take one card at a time and insert it into the correct position among the already sorted cards.",
+      "whyItMatters": "Insertion sort is one of the simplest sorting algorithms, yet it has important practical applications. It's efficient for small datasets and nearly-sorted data. Understanding insertion sort teaches you the concept of incremental sorting and adaptive algorithms.",
+      "howItWorks": {
+        "title": "How the Algorithm Works",
+        "intro": "Insertion sort builds a sorted array one element at a time. It takes each element from the unsorted portion and inserts it into its correct position in the sorted portion, shifting larger elements as needed.",
+        "step1Title": "1. Start with the First Element",
+        "step1": "The first element is considered sorted by itself. The rest of the array is unsorted.",
+        "step2Title": "2. Pick the Next Element (Key)",
+        "step2": "Take the first unsorted element — this is your 'key'. Compare it with elements in the sorted portion, moving from right to left.",
+        "step3Title": "3. Shift and Insert",
+        "step3": "If the key is smaller than the compared element, shift that element one position to the right. Continue until you find the correct position for the key:",
+        "step3a": "Shift: Move elements greater than the key one position to the right.",
+        "step3b": "Insert: Place the key in its correct position in the sorted portion.",
+        "step4Title": "4. Repeat Until Sorted",
+        "step4": "Continue picking the next unsorted element and inserting it into the sorted portion. When all elements have been processed, the array is fully sorted.",
+        "example": "Example: sorting array [12, 11, 13, 5, 6]",
+        "exampleStep1": "Pick 11, compare with 12 → 11 < 12, shift 12 right → insert 11 at position 0. Array: [11, 12, 13, 5, 6].",
+        "exampleStep2": "Pick 13, compare with 12 → 13 > 12, stays. Pick 5, shift 13, 12, 11 → insert 5 at position 0. Array: [5, 11, 12, 13, 6]."
+      },
+      "complexityAnalysis": {
+        "title": "Complexity Analysis",
+        "timeTitle": "Time Complexity",
+        "timeBest": "O(n) — best case occurs when the array is already sorted. Each element is compared only once with its predecessor, resulting in a single pass through the array.",
+        "timeAverage": "O(n²) — on average, each element needs to be compared with about half of the sorted portion. This results in roughly n²/4 comparisons.",
+        "timeWorst": "O(n²) — worst case occurs when the array is sorted in reverse order. Each new element must be compared with all elements in the sorted portion and shifted to the beginning.",
+        "spaceTitle": "Space Complexity",
+        "spaceInPlace": "O(1) — insertion sort works in-place, requiring only a single extra variable to store the key element. No additional arrays are needed.",
+        "spaceStable": "Stable — equal elements maintain their relative order. This is because we only shift elements greater than the key, not equal to it.",
+        "adaptiveTitle": "Adaptive Algorithm",
+        "adaptive": "Insertion sort is adaptive — it performs better on partially sorted data. If the array is nearly sorted, the algorithm approaches O(n) time complexity. This makes it useful as the final phase of more complex algorithms like Shell sort or Timsort."
+      },
+      "applications": {
+        "title": "Real-World Applications",
+        "app1Title": "Small Dataset Sorting",
+        "app1": "Insertion sort is often used for small datasets (n < 50) where its simplicity and low overhead make it faster than more complex algorithms. Many hybrid algorithms switch to insertion sort for small subarrays.",
+        "app2Title": "Online Sorting",
+        "app2": "Insertion sort can sort data as it arrives (online algorithm). Each new element is inserted into the correct position in the already-sorted portion, making it ideal for streaming data.",
+        "app3Title": "Timsort (Python/Java Default Sort)",
+        "app3": "Timsort, the default sorting algorithm in Python and Java, uses insertion sort for small runs (typically ≤ 32 elements). It exploits the fact that insertion sort is very efficient for small, partially sorted data.",
+        "app4Title": "Nearly Sorted Data",
+        "app4": "When data is already mostly sorted (e.g., adding a few new records to a sorted database), insertion sort runs in nearly linear time, making it the optimal choice.",
+        "app5Title": "Educational Tool",
+        "app5": "Insertion sort is often the first sorting algorithm taught because of its intuitive logic (sorting cards) and simple implementation. It helps students understand the concept of incremental algorithms."
+      },
+      "steps": {
+        "initial": "Initial state: unsorted array",
+        "pickKey": "Picking key element {value} at index {index}",
+        "compare": "Comparing key {key} with arr[{indexJ}] = {compared}",
+        "shift": "Shifting {value} from position {from} to {to}",
+        "insert": "Inserting {value} at position {position}",
         "sorted": "Array is sorted!"
       }
     },

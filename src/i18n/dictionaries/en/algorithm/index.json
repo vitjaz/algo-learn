@@ -1,4 +1,9 @@
 {
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
   "tableOfContents": "On This Page",
   "description": "Description",
   "whyItMatters": "Why It Matters",
@@ -41,8 +46,10 @@
       "unsorted": "Unsorted",
       "comparing": "Comparing",
       "swapping": "Swapping",
+      "shifting": "Shifting",
       "sorted": "Sorted",
-      "pivot": "Pivot"
+      "pivot": "Pivot",
+      "key": "Key"
     }
   }
 }

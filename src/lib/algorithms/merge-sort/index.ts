@@ -5,6 +5,7 @@ import { generateMergeSortSteps } from "./steps";
 export const meta: AlgorithmMeta = {
   slug: "merge-sort",
   category: "sorting",
+  difficulty: "medium",
   complexity: {
     best: "O(nlogn)",
     average: "O(nlogn)",
