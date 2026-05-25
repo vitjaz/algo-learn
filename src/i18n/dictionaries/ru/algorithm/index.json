@@ -1,4 +1,9 @@
 {
+  "difficulty": {
+    "easy": "Лёгкий",
+    "medium": "Средний",
+    "hard": "Сложный"
+  },
   "tableOfContents": "Содержание",
   "description": "Описание",
   "whyItMatters": "Зачем это нужно",
@@ -41,8 +46,11 @@
       "unsorted": "Неотсортировано",
       "comparing": "Сравнение",
       "swapping": "Обмен",
+      "shifting": "Сдвиг",
       "sorted": "Отсортировано",
-      "pivot": "Опорный"
+      "pivot": "Опорный",
+      "key": "Ключ",
+      "minimum": "Минимум"
     }
   }
 }

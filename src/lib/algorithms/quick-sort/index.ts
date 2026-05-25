@@ -5,6 +5,7 @@ import { generateQuickSortSteps } from "./steps";
 export const meta: AlgorithmMeta = {
   slug: "quick-sort",
   category: "sorting",
+  difficulty: "medium",
   complexity: {
     best: "O(nlogn)",
     average: "O(nlogn)",

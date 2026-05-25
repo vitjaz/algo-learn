@@ -1,5 +1,10 @@
 {
   "algorithm": {
+    "difficulty": {
+      "easy": "Easy",
+      "medium": "Medium",
+      "hard": "Hard"
+    },
     "tableOfContents": "On This Page",
     "description": "Description",
     "whyItMatters": "Why It Matters",
@@ -42,8 +47,11 @@
         "unsorted": "Unsorted",
         "comparing": "Comparing",
         "swapping": "Swapping",
+        "shifting": "Shifting",
         "sorted": "Sorted",
-        "pivot": "Pivot"
+        "pivot": "Pivot",
+        "key": "Key",
+        "minimum": "Minimum"
       }
     }
   },
@@ -186,6 +194,61 @@
         "sorted": "Array is sorted!"
       }
     },
+    "insertion-sort": {
+      "title": "Insertion Sort",
+      "description": "Insertion sort is a simple sorting algorithm that builds the final sorted array one element at a time. It works similarly to how you sort playing cards in your hands — you take one card at a time and insert it into the correct position among the already sorted cards.",
+      "whyItMatters": "Insertion sort is one of the simplest sorting algorithms, yet it has important practical applications. It's efficient for small datasets and nearly-sorted data. Understanding insertion sort teaches you the concept of incremental sorting and adaptive algorithms.",
+      "howItWorks": {
+        "title": "How the Algorithm Works",
+        "intro": "Insertion sort builds a sorted array one element at a time. It takes each element from the unsorted portion and inserts it into its correct position in the sorted portion, shifting larger elements as needed.",
+        "step1Title": "1. Start with the First Element",
+        "step1": "The first element is considered sorted by itself. The rest of the array is unsorted.",
+        "step2Title": "2. Pick the Next Element (Key)",
+        "step2": "Take the first unsorted element — this is your 'key'. Compare it with elements in the sorted portion, moving from right to left.",
+        "step3Title": "3. Shift and Insert",
+        "step3": "If the key is smaller than the compared element, shift that element one position to the right. Continue until you find the correct position for the key:",
+        "step3a": "Shift: Move elements greater than the key one position to the right.",
+        "step3b": "Insert: Place the key in its correct position in the sorted portion.",
+        "step4Title": "4. Repeat Until Sorted",
+        "step4": "Continue picking the next unsorted element and inserting it into the sorted portion. When all elements have been processed, the array is fully sorted.",
+        "example": "Example: sorting array [12, 11, 13, 5, 6]",
+        "exampleStep1": "Pick 11, compare with 12 → 11 < 12, shift 12 right → insert 11 at position 0. Array: [11, 12, 13, 5, 6].",
+        "exampleStep2": "Pick 13, compare with 12 → 13 > 12, stays. Pick 5, shift 13, 12, 11 → insert 5 at position 0. Array: [5, 11, 12, 13, 6]."
+      },
+      "complexityAnalysis": {
+        "title": "Complexity Analysis",
+        "timeTitle": "Time Complexity",
+        "timeBest": "O(n) — best case occurs when the array is already sorted. Each element is compared only once with its predecessor, resulting in a single pass through the array.",
+        "timeAverage": "O(n²) — on average, each element needs to be compared with about half of the sorted portion. This results in roughly n²/4 comparisons.",
+        "timeWorst": "O(n²) — worst case occurs when the array is sorted in reverse order. Each new element must be compared with all elements in the sorted portion and shifted to the beginning.",
+        "spaceTitle": "Space Complexity",
+        "spaceInPlace": "O(1) — insertion sort works in-place, requiring only a single extra variable to store the key element. No additional arrays are needed.",
+        "spaceStable": "Stable — equal elements maintain their relative order. This is because we only shift elements greater than the key, not equal to it.",
+        "adaptiveTitle": "Adaptive Algorithm",
+        "adaptive": "Insertion sort is adaptive — it performs better on partially sorted data. If the array is nearly sorted, the algorithm approaches O(n) time complexity. This makes it useful as the final phase of more complex algorithms like Shell sort or Timsort."
+      },
+      "applications": {
+        "title": "Real-World Applications",
+        "app1Title": "Small Dataset Sorting",
+        "app1": "Insertion sort is often used for small datasets (n < 50) where its simplicity and low overhead make it faster than more complex algorithms. Many hybrid algorithms switch to insertion sort for small subarrays.",
+        "app2Title": "Online Sorting",
+        "app2": "Insertion sort can sort data as it arrives (online algorithm). Each new element is inserted into the correct position in the already-sorted portion, making it ideal for streaming data.",
+        "app3Title": "Timsort (Python/Java Default Sort)",
+        "app3": "Timsort, the default sorting algorithm in Python and Java, uses insertion sort for small runs (typically ≤ 32 elements). It exploits the fact that insertion sort is very efficient for small, partially sorted data.",
+        "app4Title": "Nearly Sorted Data",
+        "app4": "When data is already mostly sorted (e.g., adding a few new records to a sorted database), insertion sort runs in nearly linear time, making it the optimal choice.",
+        "app5Title": "Educational Tool",
+        "app5": "Insertion sort is often the first sorting algorithm taught because of its intuitive logic (sorting cards) and simple implementation. It helps students understand the concept of incremental algorithms."
+      },
+      "steps": {
+        "initial": "Initial state: unsorted array",
+        "pickKey": "Picking key element {value} at index {index}",
+        "compare": "Comparing key {key} with arr[{indexJ}] = {compared}",
+        "shift": "Shifting {value} from position {from} to {to}",
+        "insert": "Inserting {value} at position {position}",
+        "sorted": "Array is sorted!"
+      }
+    },
     "merge-sort": {
       "title": "Merge Sort",
       "description": "Merge sort is an efficient, stable sorting algorithm that uses a divide-and-conquer strategy. It recursively splits the array into two halves, sorts each half, and then merges the sorted halves back together. The merge step is the key operation: it combines two sorted sub-arrays into one sorted array.",
@@ -299,6 +362,61 @@
         "noSwap": "Element {value} at index {index} is in correct partition",
         "noSwapGreater": "{value} > {pivot}, stays in right partition",
         "pivotPlaced": "Pivot {pivot} placed at position {position}",
+        "sorted": "Array is sorted!"
+      }
+    },
+    "selection-sort": {
+      "title": "Selection Sort",
+      "description": "Selection sort is a simple sorting algorithm that repeatedly finds the minimum element from the unsorted portion and places it at the beginning. It divides the array into a sorted and an unsorted region, gradually expanding the sorted region by one element at a time.",
+      "whyItMatters": "Selection sort is one of the simplest sorting algorithms to understand and implement. While not the most efficient, it teaches the concept of in-place sorting and selection. It performs well on small datasets and has the advantage of making the minimum possible number of swaps — at most n-1.",
+      "howItWorks": {
+        "title": "How the Algorithm Works",
+        "intro": "Selection sort works by repeatedly finding the minimum element from the unsorted portion and swapping it with the first unsorted element.",
+        "step1Title": "1. Find the Minimum",
+        "step1": "Scan the unsorted portion of the array to find the smallest element. Start with the first unsorted element as the current minimum.",
+        "step2Title": "2. Compare with Remaining Elements",
+        "step2": "Compare each remaining element with the current minimum. If a smaller element is found, update the minimum index.",
+        "step3Title": "3. Swap with First Unsorted",
+        "step3": "After scanning the entire unsorted portion, swap the minimum element with the first unsorted element:",
+        "step3a": "If the minimum is not already in place, swap it with the first unsorted position.",
+        "step3b": "The sorted portion grows by one element.",
+        "step4Title": "4. Repeat Until Sorted",
+        "step4": "Continue finding the minimum in the remaining unsorted portion and swapping. When only one element remains unsorted, the array is fully sorted.",
+        "example": "Example: sorting array [64, 25, 12, 22, 11]",
+        "exampleStep1": "Find min: 11 at index 4. Swap with 64. Array: [11, 25, 12, 22, 64].",
+        "exampleStep2": "Find min: 12 at index 2. Swap with 25. Array: [11, 12, 25, 22, 64]. Continue: 22 swapped with 25. Result: [11, 12, 22, 25, 64]."
+      },
+      "complexityAnalysis": {
+        "title": "Complexity Analysis",
+        "timeTitle": "Time Complexity",
+        "timeBest": "O(n²) — even in the best case (already sorted), selection sort must scan the entire unsorted portion to confirm the minimum. This results in n(n-1)/2 comparisons.",
+        "timeAverage": "O(n²) — on average, each pass requires scanning the remaining unsorted elements. The number of comparisons is always n(n-1)/2 regardless of input order.",
+        "timeWorst": "O(n²) — worst case is the same as best case. Selection sort always performs the same number of comparisons, making its performance predictable.",
+        "spaceTitle": "Space Complexity",
+        "spaceInPlace": "O(1) — selection sort works in-place, requiring only a few variables for tracking the minimum index. No additional arrays are needed.",
+        "spaceNotStable": "Not stable — equal elements may change their relative order during swapping. For example, if two equal elements are at different positions, the swap may reverse their order.",
+        "comparisonTitle": "Comparison with Other Sorts",
+        "comparison": "Selection sort makes fewer swaps than bubble sort (at most n-1 vs O(n²)), but always performs O(n²) comparisons. Insertion sort is generally faster on partially sorted data. Selection sort's advantage is predictable performance — it always takes the same time regardless of input order."
+      },
+      "applications": {
+        "title": "Real-World Applications",
+        "app1Title": "Small Dataset Sorting",
+        "app1": "Selection sort is suitable for small datasets (n < 20) where its simplicity outweighs its inefficiency. It's easy to implement and debug.",
+        "app2Title": "Memory-Constrained Environments",
+        "app2": "In embedded systems or environments with limited memory, selection sort's O(1) space complexity makes it attractive when memory is more critical than speed.",
+        "app3Title": "Minimizing Write Operations",
+        "app3": "Selection sort performs at most n-1 swaps, which is fewer than most other O(n²) sorting algorithms. This is useful when write operations are expensive (e.g., flash memory, EEPROM).",
+        "app4Title": "Educational Tool",
+        "app4": "Selection sort is often the second sorting algorithm taught after bubble sort. It demonstrates the concept of selection and in-place sorting, helping students understand algorithmic thinking.",
+        "app5Title": "Finding K Smallest Elements",
+        "app5": "The selection approach can be adapted to find the k smallest elements without fully sorting the array. Run k passes of selection sort to get the k smallest elements in order."
+      },
+      "steps": {
+        "initial": "Initial state: unsorted array",
+        "scanMin": "Scanning for minimum, starting with {value} at index {index}",
+        "compare": "Comparing {current} at index {index} with current minimum {min}",
+        "newMin": "New minimum found: {value} at index {index}",
+        "swap": "Swapping arr[{indexI}] = {valI} with minimum arr[{indexMin}] = {valMin}",
         "sorted": "Array is sorted!"
       }
     }

@@ -1,5 +1,47 @@
 export type CategoryId = "search" | "sorting";
 
+export type DifficultyLevel = "easy" | "medium" | "hard";
+
+export type InsertionSortStepType =
+  | "initial"
+  | "pickKey"
+  | "compare"
+  | "shift"
+  | "insert"
+  | "sorted";
+
+export interface InsertionSortStep {
+  type: InsertionSortStepType;
+  array: number[];
+  keyIndex: number | null;
+  comparing: number | null;
+  shifting: number | null;
+  inserting: number | null;
+  sortedIndices: number[];
+  descriptionKey: string;
+  descriptionParams: Record<string, string | number>;
+}
+
+export type SelectionSortStepType =
+  | "initial"
+  | "scanMin"
+  | "compare"
+  | "newMin"
+  | "swap"
+  | "sorted";
+
+export interface SelectionSortStep {
+  type: SelectionSortStepType;
+  array: number[];
+  range: [number, number];
+  minIndex: number | null;
+  comparing: number | null;
+  swapping: [number, number] | null;
+  sortedIndices: number[];
+  descriptionKey: string;
+  descriptionParams: Record<string, string | number>;
+}
+
 export interface Category {
   id: CategoryId;
   slug: string;
@@ -23,6 +65,7 @@ export interface LeetCodeTask {
 export interface AlgorithmMeta {
   slug: string;
   category: CategoryId;
+  difficulty: DifficultyLevel;
   complexity: Complexity;
   leetcodeTasks: LeetCodeTask[];
   codeExamples: {
