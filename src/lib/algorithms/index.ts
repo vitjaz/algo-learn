@@ -5,6 +5,7 @@ import * as bubbleSort from "./bubble-sort";
 import * as insertionSort from "./insertion-sort";
 import * as mergeSort from "./merge-sort";
 import * as quickSort from "./quick-sort";
+import * as selectionSort from "./selection-sort";
 
 export { categories } from "./categories";
 
@@ -46,6 +47,12 @@ export const algorithmModules: Record<string, AlgorithmModule> = {
     generateSteps: quickSort.generateSteps,
     defaultInput: quickSort.defaultInput,
     extendedContent: quickSort.extendedContent,
+  },
+  "selection-sort": {
+    meta: selectionSort.meta,
+    generateSteps: selectionSort.generateSteps,
+    defaultInput: selectionSort.defaultInput,
+    extendedContent: selectionSort.extendedContent,
   },
 };
 

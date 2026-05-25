@@ -26,6 +26,7 @@ import {
   Zap,
   Code2,
   MoveRight,
+  ListChecks,
 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
@@ -39,6 +40,7 @@ const algorithmIcons: Record<string, React.ReactNode> = {
   "insertion-sort": <MoveRight />,
   "merge-sort": <GitMerge />,
   "quick-sort": <Zap />,
+  "selection-sort": <ListChecks />,
 };
 
 export function AppSidebar() {

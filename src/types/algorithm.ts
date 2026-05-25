@@ -22,6 +22,26 @@ export interface InsertionSortStep {
   descriptionParams: Record<string, string | number>;
 }
 
+export type SelectionSortStepType =
+  | "initial"
+  | "scanMin"
+  | "compare"
+  | "newMin"
+  | "swap"
+  | "sorted";
+
+export interface SelectionSortStep {
+  type: SelectionSortStepType;
+  array: number[];
+  range: [number, number];
+  minIndex: number | null;
+  comparing: number | null;
+  swapping: [number, number] | null;
+  sortedIndices: number[];
+  descriptionKey: string;
+  descriptionParams: Record<string, string | number>;
+}
+
 export interface Category {
   id: CategoryId;
   slug: string;

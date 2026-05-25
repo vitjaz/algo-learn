@@ -8,6 +8,7 @@ import type {
   InsertionSortStep,
   MergeSortStep,
   QuickSortStep,
+  SelectionSortStep,
 } from "@/types/algorithm";
 import {
   VisualizationControls,
@@ -19,6 +20,7 @@ import { BubbleSortVisual } from "./bubble-sort-visual";
 import { InsertionSortVisual } from "./insertion-sort-visual";
 import { MergeSortVisual } from "./merge-sort-visual";
 import { QuickSortVisual } from "./quick-sort-visual";
+import { SelectionSortVisual } from "./selection-sort-visual";
 
 interface VisualizationContainerProps {
   steps:
@@ -26,7 +28,8 @@ interface VisualizationContainerProps {
     | BubbleSortStep[]
     | InsertionSortStep[]
     | MergeSortStep[]
-    | QuickSortStep[];
+    | QuickSortStep[]
+    | SelectionSortStep[];
   algorithmSlug: string;
 }
 
@@ -109,6 +112,8 @@ export function VisualizationContainer({
           <MergeSortVisual step={step as MergeSortStep} />
         ) : algorithmSlug === "insertion-sort" ? (
           <InsertionSortVisual step={step as InsertionSortStep} />
+        ) : algorithmSlug === "selection-sort" ? (
+          <SelectionSortVisual step={step as SelectionSortStep} />
         ) : (
           <BubbleSortVisual step={step as BubbleSortStep} />
         )}

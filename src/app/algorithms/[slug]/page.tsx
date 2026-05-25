@@ -14,8 +14,10 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
 const algorithmTitles: Record<string, string> = {
   "binary-search": "Бинарный поиск",
   "bubble-sort": "Сортировка пузырьком",
+  "insertion-sort": "Сортировка вставками",
   "merge-sort": "Сортировка слиянием",
   "quick-sort": "Быстрая сортировка",
+  "selection-sort": "Сортировка выбором",
 };
 
 interface AlgorithmPageProps {
