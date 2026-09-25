@@ -3,8 +3,10 @@ import type { Metadata } from "next";
 import type {
   BinarySearchStep,
   BubbleSortStep,
+  BSTStep,
   MergeSortStep,
   QuickSortStep,
+  SelectionSortStep,
 } from "@/types/algorithm";
 import { getAlgorithm, algorithmModules } from "@/lib/algorithms";
 import { AlgorithmPageClient } from "./client";
@@ -14,6 +16,7 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "";
 const algorithmTitles: Record<string, string> = {
   "binary-search": "Бинарный поиск",
   "bubble-sort": "Сортировка пузырьком",
+  bst: "Бинарное дерево поиска",
   "insertion-sort": "Сортировка вставками",
   "merge-sort": "Сортировка слиянием",
   "quick-sort": "Быстрая сортировка",
@@ -90,8 +93,10 @@ export default async function AlgorithmPage({ params }: AlgorithmPageProps) {
   ) as
     | BinarySearchStep[]
     | BubbleSortStep[]
+    | BSTStep[]
     | MergeSortStep[]
-    | QuickSortStep[];
+    | QuickSortStep[]
+    | SelectionSortStep[];
 
   const ruTitle = algorithmTitles[slug] || slug;
   const description = `Изучите алгоритм «${ruTitle}» с интерактивными визуализациями. Пошаговые анимации, примеры кода и задачи на LeetCode.`;

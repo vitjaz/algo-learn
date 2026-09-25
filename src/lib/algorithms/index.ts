@@ -2,6 +2,7 @@ import type { AlgorithmMeta } from "@/types/algorithm";
 import type { ExtendedContentConfig } from "@/types/extended-content";
 import * as binarySearch from "./binary-search";
 import * as bubbleSort from "./bubble-sort";
+import * as bst from "./bst";
 import * as insertionSort from "./insertion-sort";
 import * as mergeSort from "./merge-sort";
 import * as quickSort from "./quick-sort";
@@ -29,6 +30,12 @@ export const algorithmModules: Record<string, AlgorithmModule> = {
     generateSteps: bubbleSort.generateSteps,
     defaultInput: bubbleSort.defaultInput,
     extendedContent: bubbleSort.extendedContent,
+  },
+  bst: {
+    meta: bst.meta,
+    generateSteps: bst.generateSteps,
+    defaultInput: bst.defaultInput,
+    extendedContent: bst.extendedContent,
   },
   "insertion-sort": {
     meta: insertionSort.meta,

@@ -51,13 +51,17 @@
         "sorted": "Sorted",
         "pivot": "Pivot",
         "key": "Key",
-        "minimum": "Minimum"
+        "minimum": "Minimum",
+        "default": "Default",
+        "current": "Current",
+        "parent": "Parent"
       }
     }
   },
   "categories": {
     "search": "Search Algorithms",
-    "sorting": "Sorting Algorithms"
+    "sorting": "Sorting Algorithms",
+    "trees": "Tree Algorithms"
   },
   "common": {
     "siteName": "Algo Learn",
@@ -78,7 +82,8 @@
     "startLearning": "Start Learning",
     "quickNavTitle": "Algorithm Categories",
     "searchDesc": "Search algorithms help find elements in data structures quickly and efficiently.",
-    "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming."
+    "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming.",
+    "treesDesc": "Tree algorithms organize hierarchical data and enable efficient searching and traversal operations."
   },
   "algorithms": {
     "binary-search": {
@@ -137,6 +142,73 @@
         "goRight": "arr[{mid}] = {value} < {target}, excluding left half, searching right",
         "goLeft": "arr[{mid}] = {value} > {target}, excluding right half, searching left",
         "notFound": "Target element {target} not found in array"
+      }
+    },
+    "bst": {
+      "title": "Binary Search Tree",
+      "description": "A Binary Search Tree (BST) is a node-based binary tree data structure where each node has at most two children. For every node, all values in the left subtree are smaller, and all values in the right subtree are larger. This property enables efficient searching, insertion, and deletion operations.",
+      "whyItMatters": "BSTs are fundamental data structures used in databases, file systems, and many algorithms. Understanding BSTs teaches you how hierarchical data structures work, how to implement tree traversals, and why balanced trees (like AVL and Red-Black trees) are important for performance.",
+      "howItWorks": {
+        "title": "How the Algorithm Works",
+        "intro": "BST operations rely on the key property: for any node, left subtree values are smaller, and right subtree values are larger. This allows us to navigate the tree efficiently without scanning all elements.",
+        "step1Title": "1. Insertion",
+        "step1": "To insert a new value, start at the root and compare the value with the current node. If it's smaller, go left; if larger, go right. Repeat until you find an empty spot and insert the new node there.",
+        "step2Title": "2. Search",
+        "step2": "To search for a value, start at the root and compare with the current node. If equal — found. If smaller — go left; if larger — go right. Repeat until found or reach a null child (not found).",
+        "step3Title": "3. Deletion",
+        "step3": "Deleting a node has three cases:",
+        "step3a": "Leaf node — simply remove it.",
+        "step3b": "One child — replace the node with its child.",
+        "step3c": "Two children — replace with the in-order successor (smallest in right subtree) or predecessor, then delete that successor.",
+        "step4Title": "4. Tree Traversals",
+        "step4": "In-order traversal visits nodes in ascending order: left → root → right. Pre-order (root → left → right) and post-order (left → right → root) are useful for cloning and deleting trees.",
+        "step5Title": "5. Complexity",
+        "step5": "Operations take O(log n) on average for a balanced tree, but O(n) in the worst case when the tree degenerates into a linked list (e.g., inserting sorted data).",
+        "example": "Example: building BST from [50, 30, 70, 20, 40, 60, 80]",
+        "exampleStep1": "Insert 50 → root. Insert 30 → left of 50. Insert 70 → right of 50. Insert 20 → left of 30. Insert 40 → right of 30.",
+        "exampleStep2": "Search for 40: compare with 50 → go left, compare with 30 → go right, compare with 40 → found! Only 3 comparisons instead of 6 in a linear search."
+      },
+      "complexityAnalysis": {
+        "title": "Complexity Analysis",
+        "timeTitle": "Time Complexity",
+        "timeBest": "O(log n) — best and average case for a balanced tree. Each operation eliminates half the remaining nodes, similar to binary search.",
+        "timeAverage": "O(log n) — average case for random data. The tree height is proportional to log n with high probability.",
+        "timeWorst": "O(n) — worst case when the tree is completely unbalanced (e.g., inserting sorted data). The tree degenerates into a linked list.",
+        "spaceTitle": "Space Complexity",
+        "spaceStructure": "O(n) — the tree stores n nodes, each requiring space for value, left/right pointers, and optionally a parent pointer.",
+        "spaceHeight": "O(h) — recursive operations use stack space proportional to tree height h. For balanced trees h = log n; for degenerate trees h = n.",
+        "degenerateTitle": "Degenerate Tree Warning",
+        "degenerate": "When data is inserted in sorted order, BST becomes a linked list with O(n) operations. This is why self-balancing trees (AVL, Red-Black) are used in production."
+      },
+      "applications": {
+        "title": "Real-World Applications",
+        "app1Title": "Database Indexes",
+        "app1": "B-trees and B+ trees, used in PostgreSQL, MySQL, and MongoDB, are generalizations of BSTs optimized for disk storage. They maintain sorted data and enable range queries efficiently.",
+        "app2Title": "Symbol Tables",
+        "app2": "Compilers and interpreters use BSTs (or balanced variants) to store variable names and their values. Looking up a variable by name is O(log n) in a balanced tree.",
+        "app3Title": "Auto-Complete and Spell Checking",
+        "app3": "Trie and BST hybrids are used for prefix-based searches. BSTs can store sorted dictionaries for efficient lookups and range queries.",
+        "app4Title": "Memory Management",
+        "app4": "Operating systems use BSTs to manage free memory blocks, sorted by size or address, enabling efficient allocation and deallocation.",
+        "app5Title": "Expression Parsing",
+        "app5": "Expression trees (a type of BST) are used to represent and evaluate mathematical expressions, making it easy to implement calculators and compilers."
+      },
+      "steps": {
+        "initial": "Building BST from values: {values}",
+        "emptyTree": "Tree is empty — press Play to start inserting",
+        "insertStart": "Starting insertion of value {value}",
+        "insertCompare": "Comparing {value} with node {nodeValue}",
+        "insertGoLeft": "{value} < {nodeValue}, going left",
+        "insertGoRight": "{value} > {nodeValue}, going right",
+        "inserted": "Inserted {value} into the tree",
+        "searchStart": "Starting search for value {value}",
+        "searchCompare": "Comparing {value} with node {nodeValue}",
+        "searchGoLeft": "{value} < {nodeValue}, going left",
+        "searchGoRight": "{value} > {nodeValue}, going right",
+        "searchFound": "Found! {value} equals {nodeValue}",
+        "searchNotFound": "Value {value} not found in the tree",
+        "searchTarget": "Search target: {value}",
+        "insertTitle": "Building BST"
       }
     },
     "bubble-sort": {
