@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import type {
   BinarySearchStep,
   BubbleSortStep,
+  BSTStep,
   InsertionSortStep,
   MergeSortStep,
   QuickSortStep,
@@ -17,6 +18,7 @@ import {
 } from "./visualization-controls";
 import { BinarySearchVisual } from "./binary-search-visual";
 import { BubbleSortVisual } from "./bubble-sort-visual";
+import { BSTVisual } from "./bst-visual";
 import { InsertionSortVisual } from "./insertion-sort-visual";
 import { MergeSortVisual } from "./merge-sort-visual";
 import { QuickSortVisual } from "./quick-sort-visual";
@@ -26,6 +28,7 @@ interface VisualizationContainerProps {
   steps:
     | BinarySearchStep[]
     | BubbleSortStep[]
+    | BSTStep[]
     | InsertionSortStep[]
     | MergeSortStep[]
     | QuickSortStep[]
@@ -106,6 +109,8 @@ export function VisualizationContainer({
       <div className="rounded-lg overflow-hidden bg-muted/30">
         {algorithmSlug === "binary-search" ? (
           <BinarySearchVisual step={step as BinarySearchStep} />
+        ) : algorithmSlug === "bst" ? (
+          <BSTVisual step={step as BSTStep} />
         ) : algorithmSlug === "quick-sort" ? (
           <QuickSortVisual step={step as QuickSortStep} />
         ) : algorithmSlug === "merge-sort" ? (

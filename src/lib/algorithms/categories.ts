@@ -17,4 +17,9 @@ export const categories: Category[] = [
       "selection-sort",
     ],
   },
+  {
+    id: "trees",
+    slug: "trees",
+    algorithms: ["bst"],
+  },
 ];

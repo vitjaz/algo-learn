@@ -10,11 +10,12 @@ import {
   CardTitle,
   CardDescription,
 } from "@/components/ui/card";
-import { Search, ArrowUpDown, ArrowRight } from "lucide-react";
+import { Search, ArrowUpDown, ArrowRight, TreePine } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   search: <Search className="size-5" />,
   sorting: <ArrowUpDown className="size-5" />,
+  trees: <TreePine className="size-5" />,
 };
 
 export function QuickNav() {

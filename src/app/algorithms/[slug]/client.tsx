@@ -5,8 +5,10 @@ import { useTranslations } from "next-intl";
 import type {
   BinarySearchStep,
   BubbleSortStep,
+  BSTStep,
   MergeSortStep,
   QuickSortStep,
+  SelectionSortStep,
   AlgorithmMeta,
 } from "@/types/algorithm";
 import type { ExtendedContentConfig } from "@/types/extended-content";
@@ -38,8 +40,10 @@ interface AlgorithmPageClientProps {
   steps:
     | BinarySearchStep[]
     | BubbleSortStep[]
+    | BSTStep[]
     | MergeSortStep[]
-    | QuickSortStep[];
+    | QuickSortStep[]
+    | SelectionSortStep[];
   extendedContent?: ExtendedContentConfig;
 }
 

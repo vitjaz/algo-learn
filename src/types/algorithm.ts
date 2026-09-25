@@ -1,4 +1,4 @@
-export type CategoryId = "search" | "sorting";
+export type CategoryId = "search" | "sorting" | "trees";
 
 export type DifficultyLevel = "easy" | "medium" | "hard";
 
@@ -155,6 +155,40 @@ export interface MergeSortStep {
   rightIndex: number | null;
   placing: number | null;
   sortedIndices: number[];
+  descriptionKey: string;
+  descriptionParams: Record<string, string | number>;
+}
+
+// --- BST ---
+
+export interface BSTNode {
+  id: number;
+  value: number;
+  left: BSTNode | null;
+  right: BSTNode | null;
+  parentId: number | null;
+}
+
+export type BSTStepType =
+  | "initial"
+  | "insertStart"
+  | "insertCompare"
+  | "insertGoLeft"
+  | "insertGoRight"
+  | "inserted"
+  | "searchStart"
+  | "searchCompare"
+  | "searchGoLeft"
+  | "searchGoRight"
+  | "searchFound"
+  | "searchNotFound";
+
+export interface BSTStep {
+  type: BSTStepType;
+  tree: BSTNode | null;
+  currentNodeId: number | null;
+  targetValue: number;
+  parentNodeId: number | null;
   descriptionKey: string;
   descriptionParams: Record<string, string | number>;
 }

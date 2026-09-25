@@ -50,7 +50,10 @@
       "sorted": "Sorted",
       "pivot": "Pivot",
       "key": "Key",
-      "minimum": "Minimum"
+      "minimum": "Minimum",
+      "default": "Default",
+      "current": "Current",
+      "parent": "Parent"
     }
   }
 }

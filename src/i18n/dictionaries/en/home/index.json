@@ -5,5 +5,6 @@
   "startLearning": "Start Learning",
   "quickNavTitle": "Algorithm Categories",
   "searchDesc": "Search algorithms help find elements in data structures quickly and efficiently.",
-  "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming."
+  "sortingDesc": "Sorting algorithms arrange data in order — a fundamental skill in programming.",
+  "treesDesc": "Tree algorithms organize hierarchical data and enable efficient searching and traversal operations."
 }

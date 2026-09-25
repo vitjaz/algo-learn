@@ -27,16 +27,20 @@ import {
   Code2,
   MoveRight,
   ListChecks,
+  TreePine,
+  Network,
 } from "lucide-react";
 
 const categoryIcons: Record<string, React.ReactNode> = {
   search: <Search />,
   sorting: <ArrowUpDown />,
+  trees: <TreePine />,
 };
 
 const algorithmIcons: Record<string, React.ReactNode> = {
   "binary-search": <Binary />,
   "bubble-sort": <Bubbles />,
+  bst: <Network />,
   "insertion-sort": <MoveRight />,
   "merge-sort": <GitMerge />,
   "quick-sort": <Zap />,
